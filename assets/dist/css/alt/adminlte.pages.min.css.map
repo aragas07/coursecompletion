@@ -1,0 +1,1108 @@
+*/
+.move-left > .inner-wrap {
+  -webkit-transform: translate3d(-250px, 0, 0);
+  -moz-transform: translate3d(-250px, 0, 0);
+  -ms-transform: translate3d(-250px, 0, 0);
+  -o-transform: translate3d(-250px, 0, 0);
+  transform: translate3d(-250px, 0, 0); }
+/* line 345, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+.move-left a.exit-off-canvas {
+  transition: background 300ms ease;
+  cursor: pointer;
+  box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1002; }
+  @media only screen and (min-width: 40.063em) {
+    /* line 244, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+    .move-left a.exit-off-canvas:hover {
+      background: rgba(255, 255, 255, 0.05); } }
+
+/* line 353, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+.lt-ie10 .left-off-canvas-menu {
+  left: -250px; }
+/* line 354, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+.lt-ie10 .right-off-canvas-menu {
+  right: -250px; }
+/* line 357, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+.lt-ie10 .move-left > .inner-wrap {
+  right: 250px; }
+/* line 358, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_offcanvas.scss */
+.lt-ie10 .move-right > .inner-wrap {
+  left: 250px; }
+
+/* Foundation Visibility HTML Classes */
+/* line 27, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.show-for-small,
+.show-for-small-only,
+.show-for-medium-down,
+.show-for-large-down,
+.hide-for-medium,
+.hide-for-medium-up,
+.hide-for-medium-only,
+.hide-for-large,
+.hide-for-large-up,
+.hide-for-large-only,
+.hide-for-xlarge,
+.hide-for-xlarge-up,
+.hide-for-xlarge-only,
+.hide-for-xxlarge-up,
+.hide-for-xxlarge-only {
+  display: inherit !important; }
+
+/* line 43, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.hide-for-small,
+.hide-for-small-only,
+.hide-for-medium-down,
+.show-for-medium,
+.show-for-medium-up,
+.show-for-medium-only,
+.hide-for-large-down,
+.show-for-large,
+.show-for-large-up,
+.show-for-large-only,
+.show-for-xlarge,
+.show-for-xlarge-up,
+.show-for-xlarge-only,
+.show-for-xxlarge-up,
+.show-for-xxlarge-only {
+  display: none !important; }
+
+/* Specific visibility for tables */
+/* line 61, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+table.show-for-small, table.show-for-small-only, table.show-for-medium-down, table.show-for-large-down, table.hide-for-medium, table.hide-for-medium-up, table.hide-for-medium-only, table.hide-for-large, table.hide-for-large-up, table.hide-for-large-only, table.hide-for-xlarge, table.hide-for-xlarge-up, table.hide-for-xlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge-only {
+  display: table; }
+
+/* line 78, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+thead.show-for-small, thead.show-for-small-only, thead.show-for-medium-down, thead.show-for-large-down, thead.hide-for-medium, thead.hide-for-medium-up, thead.hide-for-medium-only, thead.hide-for-large, thead.hide-for-large-up, thead.hide-for-large-only, thead.hide-for-xlarge, thead.hide-for-xlarge-up, thead.hide-for-xlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge-only {
+  display: table-header-group !important; }
+
+/* line 95, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tbody.show-for-small, tbody.show-for-small-only, tbody.show-for-medium-down, tbody.show-for-large-down, tbody.hide-for-medium, tbody.hide-for-medium-up, tbody.hide-for-medium-only, tbody.hide-for-large, tbody.hide-for-large-up, tbody.hide-for-large-only, tbody.hide-for-xlarge, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge-only {
+  display: table-row-group !important; }
+
+/* line 112, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tr.show-for-small, tr.show-for-small-only, tr.show-for-medium-down, tr.show-for-large-down, tr.hide-for-medium, tr.hide-for-medium-up, tr.hide-for-medium-only, tr.hide-for-large, tr.hide-for-large-up, tr.hide-for-large-only, tr.hide-for-xlarge, tr.hide-for-xlarge-up, tr.hide-for-xlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge-only {
+  display: table-row !important; }
+
+/* line 126, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+td.show-for-small, td.show-for-small-only, td.show-for-medium-down
+td.show-for-large-down, td.hide-for-medium, td.hide-for-medium-up, td.hide-for-large, td.hide-for-large-up, td.hide-for-xlarge
+td.hide-for-xlarge-up, td.hide-for-xxlarge-up,
+th.show-for-small,
+th.show-for-small-only,
+th.show-for-medium-down
+th.show-for-large-down,
+th.hide-for-medium,
+th.hide-for-medium-up,
+th.hide-for-large,
+th.hide-for-large-up,
+th.hide-for-xlarge
+th.hide-for-xlarge-up,
+th.hide-for-xxlarge-up {
+  display: table-cell !important; }
+
+/* Medium Displays: 641px and up */
+@media only screen and (min-width: 40.063em) {
+  /* line 144, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-small,
+  .hide-for-small-only,
+  .show-for-medium,
+  .show-for-medium-down,
+  .show-for-medium-up,
+  .show-for-medium-only,
+  .hide-for-large,
+  .hide-for-large-up,
+  .hide-for-large-only,
+  .hide-for-xlarge,
+  .hide-for-xlarge-up,
+  .hide-for-xlarge-only,
+  .hide-for-xxlarge-up,
+  .hide-for-xxlarge-only {
+    display: inherit !important; }
+
+  /* line 160, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-small,
+  .show-for-small-only,
+  .hide-for-medium,
+  .hide-for-medium-down,
+  .hide-for-medium-up,
+  .hide-for-medium-only,
+  .hide-for-large-down,
+  .show-for-large,
+  .show-for-large-up,
+  .show-for-large-only,
+  .show-for-xlarge,
+  .show-for-xlarge-up,
+  .show-for-xlarge-only,
+  .show-for-xxlarge-up,
+  .show-for-xxlarge-only {
+    display: none !important; }
+
+  /* Specific visibility for tables */
+  /* line 177, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.hide-for-small, table.hide-for-small-only, table.show-for-medium, table.show-for-medium-down, table.show-for-medium-up, table.show-for-medium-only, table.hide-for-large, table.hide-for-large-up, table.hide-for-large-only, table.hide-for-xlarge, table.hide-for-xlarge-up, table.hide-for-xlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge-only {
+    display: table; }
+
+  /* line 193, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.hide-for-small, thead.hide-for-small-only, thead.show-for-medium, thead.show-for-medium-down, thead.show-for-medium-up, thead.show-for-medium-only, thead.hide-for-large, thead.hide-for-large-up, thead.hide-for-large-only, thead.hide-for-xlarge, thead.hide-for-xlarge-up, thead.hide-for-xlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge-only {
+    display: table-header-group !important; }
+
+  /* line 209, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.hide-for-small, tbody.hide-for-small-only, tbody.show-for-medium, tbody.show-for-medium-down, tbody.show-for-medium-up, tbody.show-for-medium-only, tbody.hide-for-large, tbody.hide-for-large-up, tbody.hide-for-large-only, tbody.hide-for-xlarge, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge-only {
+    display: table-row-group !important; }
+
+  /* line 225, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.hide-for-small, tr.hide-for-small-only, tr.show-for-medium, tr.show-for-medium-down, tr.show-for-medium-up, tr.show-for-medium-only, tr.hide-for-large, tr.hide-for-large-up, tr.hide-for-large-only, tr.hide-for-xlarge, tr.hide-for-xlarge-up, tr.hide-for-xlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge-only {
+    display: table-row !important; }
+
+  /* line 242, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.hide-for-small, td.hide-for-small-only, td.show-for-medium, td.show-for-medium-down, td.show-for-medium-up, td.show-for-medium-only, td.hide-for-large, td.hide-for-large-up, td.hide-for-large-only, td.hide-for-xlarge, td.hide-for-xlarge-up, td.hide-for-xlarge-only, td.hide-for-xxlarge-up, td.hide-for-xxlarge-only,
+  th.hide-for-small,
+  th.hide-for-small-only,
+  th.show-for-medium,
+  th.show-for-medium-down,
+  th.show-for-medium-up,
+  th.show-for-medium-only,
+  th.hide-for-large,
+  th.hide-for-large-up,
+  th.hide-for-large-only,
+  th.hide-for-xlarge,
+  th.hide-for-xlarge-up,
+  th.hide-for-xlarge-only,
+  th.hide-for-xxlarge-up,
+  th.hide-for-xxlarge-only {
+    display: table-cell !important; } }
+/* Large Displays: 1024px and up */
+@media only screen and (min-width: 64.063em) {
+  /* line 261, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-small,
+  .hide-for-small-only,
+  .hide-for-medium,
+  .hide-for-medium-down,
+  .hide-for-medium-only,
+  .show-for-medium-up,
+  .show-for-large,
+  .show-for-large-up,
+  .show-for-large-only,
+  .hide-for-xlarge,
+  .hide-for-xlarge-up,
+  .hide-for-xlarge-only,
+  .hide-for-xxlarge-up,
+  .hide-for-xxlarge-only {
+    display: inherit !important; }
+
+  /* line 274, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-small-only,
+  .show-for-medium,
+  .show-for-medium-down,
+  .show-for-medium-only,
+  .hide-for-large,
+  .hide-for-large-up,
+  .hide-for-large-only,
+  .show-for-xlarge,
+  .show-for-xlarge-up,
+  .show-for-xlarge-only,
+  .show-for-xxlarge-up,
+  .show-for-xxlarge-only {
+    display: none !important; }
+
+  /* Specific visilbity for tables */
+  /* line 291, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.hide-for-small, table.hide-for-small-only, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-medium-only, table.show-for-medium-up, table.show-for-large, table.show-for-large-up, table.show-for-large-only, table.hide-for-xlarge, table.hide-for-xlarge-up, table.hide-for-xlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge-only {
+    display: table; }
+
+  /* line 307, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.hide-for-small, thead.hide-for-small-only, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.show-for-large, thead.show-for-large-up, thead.show-for-large-only, thead.hide-for-xlarge, thead.hide-for-xlarge-up, thead.hide-for-xlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge-only {
+    display: table-header-group !important; }
+
+  /* line 323, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.hide-for-small, tbody.hide-for-small-only, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.show-for-large, tbody.show-for-large-up, tbody.show-for-large-only, tbody.hide-for-xlarge, tbody.hide-for-xlarge-up, tbody.hide-for-xlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge-only {
+    display: table-row-group !important; }
+
+  /* line 339, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.hide-for-small, tr.hide-for-small-only, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.show-for-large, tr.show-for-large-up, tr.show-for-large-only, tr.hide-for-xlarge, tr.hide-for-xlarge-up, tr.hide-for-xlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge-only {
+    display: table-row !important; }
+
+  /* line 356, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.hide-for-small, td.hide-for-small-only, td.hide-for-medium, td.hide-for-medium-down, td.hide-for-medium-only, td.show-for-medium-up, td.show-for-large, td.show-for-large-up, td.show-for-large-only, td.hide-for-xlarge, td.hide-for-xlarge-up, td.hide-for-xlarge-only, td.hide-for-xxlarge-up, td.hide-for-xxlarge-only,
+  th.hide-for-small,
+  th.hide-for-small-only,
+  th.hide-for-medium,
+  th.hide-for-medium-down,
+  th.hide-for-medium-only,
+  th.show-for-medium-up,
+  th.show-for-large,
+  th.show-for-large-up,
+  th.show-for-large-only,
+  th.hide-for-xlarge,
+  th.hide-for-xlarge-up,
+  th.hide-for-xlarge-only,
+  th.hide-for-xxlarge-up,
+  th.hide-for-xxlarge-only {
+    display: table-cell !important; } }
+/* X-Large Displays: 1441 and up */
+@media only screen and (min-width: 90.063em) {
+  /* line 373, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-small,
+  .hide-for-small-only,
+  .hide-for-medium,
+  .hide-for-medium-down,
+  .hide-for-medium-only,
+  .show-for-medium-up,
+  .show-for-large-up,
+  .show-for-xlarge,
+  .show-for-xlarge-up,
+  .show-for-xlarge-only,
+  .hide-for-xxlarge-up,
+  .hide-for-xxlarge-only {
+    display: inherit !important; }
+
+  /* line 386, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-small-only,
+  .show-for-medium,
+  .show-for-medium-down,
+  .show-for-medium-only,
+  .show-for-large,
+  .show-for-large-only,
+  .show-for-large-down,
+  .hide-for-xlarge,
+  .hide-for-xlarge-up,
+  .hide-for-xlarge-only,
+  .show-for-xxlarge-up,
+  .show-for-xxlarge-only {
+    display: none !important; }
+
+  /* Specific visilbity for tables */
+  /* line 401, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.hide-for-small, table.hide-for-small-only, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-medium-only, table.show-for-medium-up, table.show-for-large-up, table.show-for-xlarge, table.show-for-xlarge-up, table.show-for-xlarge-only, table.hide-for-xxlarge-up, table.hide-for-xxlarge-only {
+    display: table; }
+
+  /* line 415, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.hide-for-small, thead.hide-for-small-only, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.show-for-large-up, thead.show-for-xlarge, thead.show-for-xlarge-up, thead.show-for-xlarge-only, thead.hide-for-xxlarge-up, thead.hide-for-xxlarge-only {
+    display: table-header-group !important; }
+
+  /* line 429, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.hide-for-small, tbody.hide-for-small-only, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.show-for-large-up, tbody.show-for-xlarge, tbody.show-for-xlarge-up, tbody.show-for-xlarge-only, tbody.hide-for-xxlarge-up, tbody.hide-for-xxlarge-only {
+    display: table-row-group !important; }
+
+  /* line 443, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.hide-for-small, tr.hide-for-small-only, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.show-for-large-up, tr.show-for-xlarge, tr.show-for-xlarge-up, tr.show-for-xlarge-only, tr.hide-for-xxlarge-up, tr.hide-for-xxlarge-only {
+    display: table-row !important; }
+
+  /* line 458, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.hide-for-small, td.hide-for-small-only, td.hide-for-medium, td.hide-for-medium-down, td.hide-for-medium-only, td.show-for-medium-up, td.show-for-large-up, td.show-for-xlarge, td.show-for-xlarge-up, td.show-for-xlarge-only, td.hide-for-xxlarge-up, td.hide-for-xxlarge-only,
+  th.hide-for-small,
+  th.hide-for-small-only,
+  th.hide-for-medium,
+  th.hide-for-medium-down,
+  th.hide-for-medium-only,
+  th.show-for-medium-up,
+  th.show-for-large-up,
+  th.show-for-xlarge,
+  th.show-for-xlarge-up,
+  th.show-for-xlarge-only,
+  th.hide-for-xxlarge-up,
+  th.hide-for-xxlarge-only {
+    display: table-cell !important; } }
+/* XX-Large Displays: 1920 and up */
+@media only screen and (min-width: 120.063em) {
+  /* line 473, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-small,
+  .hide-for-small-only,
+  .hide-for-medium,
+  .hide-for-medium-down,
+  .hide-for-medium-only,
+  .show-for-medium-up,
+  .show-for-large-up,
+  .show-for-xlarge-up,
+  .show-for-xxlarge-up,
+  .show-for-xxlarge-only {
+    display: inherit !important; }
+
+  /* line 485, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-small-only,
+  .show-for-medium,
+  .show-for-medium-down,
+  .show-for-medium-only,
+  .show-for-large,
+  .show-for-large-only,
+  .show-for-large-down,
+  .hide-for-xlarge,
+  .show-for-xlarge-only,
+  .hide-for-xxlarge-up,
+  .hide-for-xxlarge-only {
+    display: none !important; }
+
+  /* Specific visilbity for tables */
+  /* line 498, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.hide-for-small, table.hide-for-small-only, table.hide-for-medium, table.hide-for-medium-down, table.hide-for-medium-only, table.show-for-medium-up, table.show-for-large-up, table.show-for-xlarge-up, table.show-for-xxlarge-up, table.show-for-xxlarge-only {
+    display: table; }
+
+  /* line 510, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.hide-for-small, thead.hide-for-small-only, thead.hide-for-medium, thead.hide-for-medium-down, thead.hide-for-medium-only, thead.show-for-medium-up, thead.show-for-large-up, thead.show-for-xlarge-up, thead.show-for-xxlarge-up, thead.show-for-xxlarge-only {
+    display: table-header-group !important; }
+
+  /* line 522, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.hide-for-small, tbody.hide-for-small-only, tbody.hide-for-medium, tbody.hide-for-medium-down, tbody.hide-for-medium-only, tbody.show-for-medium-up, tbody.show-for-large-up, tbody.show-for-xlarge-up, tbody.show-for-xxlarge-up, tbody.show-for-xxlarge-only {
+    display: table-row-group !important; }
+
+  /* line 534, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.hide-for-small, tr.hide-for-small-only, tr.hide-for-medium, tr.hide-for-medium-down, tr.hide-for-medium-only, tr.show-for-medium-up, tr.show-for-large-up, tr.show-for-xlarge-up, tr.show-for-xxlarge-up, tr.show-for-xxlarge-only {
+    display: table-row !important; }
+
+  /* line 547, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.hide-for-small, td.hide-for-small-only, td.hide-for-medium, td.hide-for-medium-down, td.hide-for-medium-only, td.show-for-medium-up, td.show-for-large-up, td.show-for-xlarge-up, td.show-for-xxlarge-up, td.show-for-xxlarge-only,
+  th.hide-for-small,
+  th.hide-for-small-only,
+  th.hide-for-medium,
+  th.hide-for-medium-down,
+  th.hide-for-medium-only,
+  th.show-for-medium-up,
+  th.show-for-large-up,
+  th.show-for-xlarge-up,
+  th.show-for-xxlarge-up,
+  th.show-for-xxlarge-only {
+    display: table-cell !important; } }
+/* Orientation targeting */
+/* line 554, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.show-for-landscape,
+.hide-for-portrait {
+  display: inherit !important; }
+
+/* line 556, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.hide-for-landscape,
+.show-for-portrait {
+  display: none !important; }
+
+/* Specific visilbity for tables */
+/* line 561, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+table.hide-for-landscape, table.show-for-portrait {
+  display: table; }
+
+/* line 565, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+thead.hide-for-landscape, thead.show-for-portrait {
+  display: table-header-group !important; }
+
+/* line 569, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tbody.hide-for-landscape, tbody.show-for-portrait {
+  display: table-row-group !important; }
+
+/* line 573, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tr.hide-for-landscape, tr.show-for-portrait {
+  display: table-row !important; }
+
+/* line 578, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+td.hide-for-landscape, td.show-for-portrait,
+th.hide-for-landscape,
+th.show-for-portrait {
+  display: table-cell !important; }
+
+@media only screen and (orientation: landscape) {
+  /* line 583, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-landscape,
+  .hide-for-portrait {
+    display: inherit !important; }
+
+  /* line 585, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-landscape,
+  .show-for-portrait {
+    display: none !important; }
+
+  /* Specific visilbity for tables */
+  /* line 590, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.show-for-landscape, table.hide-for-portrait {
+    display: table; }
+
+  /* line 594, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.show-for-landscape, thead.hide-for-portrait {
+    display: table-header-group !important; }
+
+  /* line 598, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.show-for-landscape, tbody.hide-for-portrait {
+    display: table-row-group !important; }
+
+  /* line 602, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.show-for-landscape, tr.hide-for-portrait {
+    display: table-row !important; }
+
+  /* line 607, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.show-for-landscape, td.hide-for-portrait,
+  th.show-for-landscape,
+  th.hide-for-portrait {
+    display: table-cell !important; } }
+@media only screen and (orientation: portrait) {
+  /* line 613, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .show-for-portrait,
+  .hide-for-landscape {
+    display: inherit !important; }
+
+  /* line 615, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  .hide-for-portrait,
+  .show-for-landscape {
+    display: none !important; }
+
+  /* Specific visilbity for tables */
+  /* line 620, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  table.show-for-portrait, table.hide-for-landscape {
+    display: table; }
+
+  /* line 624, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  thead.show-for-portrait, thead.hide-for-landscape {
+    display: table-header-group !important; }
+
+  /* line 628, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tbody.show-for-portrait, tbody.hide-for-landscape {
+    display: table-row-group !important; }
+
+  /* line 632, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  tr.show-for-portrait, tr.hide-for-landscape {
+    display: table-row !important; }
+
+  /* line 637, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+  td.show-for-portrait, td.hide-for-landscape,
+  th.show-for-portrait,
+  th.hide-for-landscape {
+    display: table-cell !important; } }
+/* Touch-enabled device targeting */
+/* line 642, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.show-for-touch {
+  display: none !important; }
+
+/* line 643, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.hide-for-touch {
+  display: inherit !important; }
+
+/* line 644, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch .show-for-touch {
+  display: inherit !important; }
+
+/* line 645, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch .hide-for-touch {
+  display: none !important; }
+
+/* Specific visilbity for tables */
+/* line 648, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+table.hide-for-touch {
+  display: table; }
+
+/* line 649, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch table.show-for-touch {
+  display: table; }
+
+/* line 650, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+thead.hide-for-touch {
+  display: table-header-group !important; }
+
+/* line 651, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch thead.show-for-touch {
+  display: table-header-group !important; }
+
+/* line 652, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tbody.hide-for-touch {
+  display: table-row-group !important; }
+
+/* line 653, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch tbody.show-for-touch {
+  display: table-row-group !important; }
+
+/* line 654, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+tr.hide-for-touch {
+  display: table-row !important; }
+
+/* line 655, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch tr.show-for-touch {
+  display: table-row !important; }
+
+/* line 656, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+td.hide-for-touch {
+  display: table-cell !important; }
+
+/* line 657, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch td.show-for-touch {
+  display: table-cell !important; }
+
+/* line 658, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+th.hide-for-touch {
+  display: table-cell !important; }
+
+/* line 659, /home/bitnami/projects/apachefriends-web/bower_components/foundation/scss/foundation/components/_visibility.scss */
+.touch th.show-for-touch {
+  display: table-cell !important; }
+
+/* line 693, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/all.scss */
+.top-bar-section > ul > li > a:not(.button) {
+  padding: 0 15px;
+  /* reduce padding to allow more nav items */ }
+
+/* line 697, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/all.scss */
+.asciidoctor {
+  font-size: 1em;
+  /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
+  /* ========================================================================== HTML5 display definitions ========================================================================== */
+  /** Correct `block` display not defined in IE 8/9. */
+  /** Correct `inline-block` display not defined in IE 8/9. */
+  /** Prevent modern browsers from displaying `audio` without controls. Remove excess height in iOS 5 devices. */
+  /** Address `[hidden]` styling not present in IE 8/9. Hide the `template` element in IE, Safari, and Firefox < 22. */
+  /* ========================================================================== Base ========================================================================== */
+  /** 1. Set default font family to sans-serif. 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
+  /** Remove default margin. */
+  /* ========================================================================== Links ========================================================================== */
+  /** Remove the gray background color from active links in IE 10. */
+  /** Address `outline` inconsistency between Chrome and other browsers. */
+  /** Improve readability when focused and also mouse hovered in all browsers. */
+  /* ========================================================================== Typography ========================================================================== */
+  /** Address variable `h1` font-size and margin within `section` and `article` contexts in Firefox 4+, Safari 5, and Chrome. */
+  /** Address styling not present in IE 8/9, Safari 5, and Chrome. */
+  /** Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+  /** Address styling not present in Safari 5 and Chrome. */
+  /** Address differences between Firefox and other browsers. */
+  /** Address styling not present in IE 8/9. */
+  /** Correct font family set oddly in Safari 5 and Chrome. */
+  /** Improve readability of pre-formatted text in all browsers. */
+  /** Set consistent quote types. */
+  /** Address inconsistent and variable font size in all browsers. */
+  /** Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+  /* ========================================================================== Embedded content ========================================================================== */
+  /** Remove border when inside `a` element in IE 8/9. */
+  /** Correct overflow displayed oddly in IE 9. */
+  /* ========================================================================== Figures ========================================================================== */
+  /** Address margin not present in IE 8/9 and Safari 5. */
+  /* ========================================================================== Forms ========================================================================== */
+  /** Define consistent border, margin, and padding. */
+  /** 1. Correct `color` not being inherited in IE 8/9. 2. Remove padding so people aren't caught out if they zero out fieldsets. */
+  /** 1. Correct font family not being inherited in all browsers. 2. Correct font size not being inherited in all browsers. 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome. */
+  /** Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet. */
+  /** Address inconsistent `text-transform` inheritance for `button` and `select`. All other form control elements do not inherit `text-transform` values. Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+. Correct `select` style inheritance in Firefox 4+ and Opera. */
+  /** 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls. 2. Correct inability to style clickable `input` types in iOS. 3. Improve usability and consistency of cursor style between image-type `input` and others. */
+  /** Re-set default cursor for disabled elements. */
+  /** 1. Address box sizing set to `content-box` in IE 8/9. 2. Remove excess padding in IE 8/9. */
+  /** 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome. 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome (include `-moz` to future-proof). */
+  /** Remove inner padding and search cancel button in Safari 5 and Chrome on OS X. */
+  /** Remove inner padding and border in Firefox 4+. */
+  /** 1. Remove default vertical scrollbar in IE 8/9. 2. Improve readability and alignment in all browsers. */
+  /* ========================================================================== Tables ========================================================================== */
+  /** Remove most spacing between table cells. */
+  /* Typography resets */
+  /* Default Link Styles */
+  /* Default paragraph styles */
+  /* Default header styles */
+  /* Helpful Typography Defaults */
+  /* Lists */
+  /* Unordered Lists */
+  /* Ordered Lists */
+  /* Definition Lists */
+  /* Abbreviations */
+  /* Blockquotes */
+  /* Microformats */
+  /* Tables */
+  /* use foundation sizes */ }
+  /* line 5, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor article, .asciidoctor aside, .asciidoctor details, .asciidoctor figcaption, .asciidoctor figure, .asciidoctor footer, .asciidoctor header, .asciidoctor hgroup, .asciidoctor main, .asciidoctor nav, .asciidoctor section, .asciidoctor summary {
+    display: block; }
+  /* line 8, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor audio, .asciidoctor canvas, .asciidoctor video {
+    display: inline-block; }
+  /* line 11, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor audio:not([controls]) {
+    display: none;
+    height: 0; }
+  /* line 14, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor [hidden], .asciidoctor template {
+    display: none; }
+  /* line 16, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor script {
+    display: none !important; }
+  /* line 20, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor html {
+    font-family: sans-serif;
+    /* 1 */
+    -ms-text-size-adjust: 100%;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */ }
+  /* line 23, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor body {
+    margin: 0; }
+  /* line 27, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a {
+    background: transparent; }
+  /* line 30, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a:focus {
+    outline: thin dotted; }
+  /* line 33, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a:active, .asciidoctor a:hover {
+    outline: 0; }
+  /* line 37, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1 {
+    font-size: 2em;
+    margin: 0.67em 0; }
+  /* line 40, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor abbr[title] {
+    border-bottom: 1px dotted; }
+  /* line 43, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor b, .asciidoctor strong {
+    font-weight: bold; }
+  /* line 46, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor dfn {
+    font-style: italic; }
+  /* line 49, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0; }
+  /* line 52, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor mark {
+    background: #ff0;
+    color: #000; }
+  /* line 55, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor code, .asciidoctor kbd, .asciidoctor pre, .asciidoctor samp {
+    font-family: monospace, serif;
+    font-size: 1em; }
+  /* line 58, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor pre {
+    white-space: pre-wrap; }
+  /* line 61, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor q {
+    quotes: "\201C" "\201D" "\2018" "\2019"; }
+  /* line 64, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor small {
+    font-size: 80%; }
+  /* line 67, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor sub, .asciidoctor sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline; }
+  /* line 69, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor sup {
+    top: -0.5em; }
+  /* line 71, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor sub {
+    bottom: -0.25em; }
+  /* line 75, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor img {
+    border: 0; }
+  /* line 78, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor svg:not(:root) {
+    overflow: hidden; }
+  /* line 82, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor figure {
+    margin: 0; }
+  /* line 86, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em; }
+  /* line 89, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor legend {
+    border: 0;
+    /* 1 */
+    padding: 0;
+    /* 2 */ }
+  /* line 92, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button, .asciidoctor input, .asciidoctor select, .asciidoctor textarea {
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 2 */
+    margin: 0;
+    /* 3 */ }
+  /* line 95, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button, .asciidoctor input {
+    line-height: normal; }
+  /* line 98, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button, .asciidoctor select {
+    text-transform: none; }
+  /* line 101, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button, .asciidoctor html input[type="button"], .asciidoctor input[type="reset"], .asciidoctor input[type="submit"] {
+    -webkit-appearance: button;
+    /* 2 */
+    cursor: pointer;
+    /* 3 */ }
+  /* line 104, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button[disabled], .asciidoctor html input[disabled] {
+    cursor: default; }
+  /* line 107, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor input[type="checkbox"], .asciidoctor input[type="radio"] {
+    box-sizing: border-box;
+    /* 1 */
+    padding: 0;
+    /* 2 */ }
+  /* line 110, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor input[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    /* 2 */
+    box-sizing: content-box; }
+  /* line 113, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor input[type="search"]::-webkit-search-cancel-button, .asciidoctor input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+  /* line 116, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor button::-moz-focus-inner, .asciidoctor input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+  /* line 119, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor textarea {
+    overflow: auto;
+    /* 1 */
+    vertical-align: top;
+    /* 2 */ }
+  /* line 123, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+  /* line 125, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor meta.foundation-mq-small {
+    font-family: "only screen and (min-width: 768px)";
+    width: 768px; }
+  /* line 127, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor meta.foundation-mq-medium {
+    font-family: "only screen and (min-width:1280px)";
+    width: 1280px; }
+  /* line 129, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor meta.foundation-mq-large {
+    font-family: "only screen and (min-width:1440px)";
+    width: 1440px; }
+  /* line 131, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor *, .asciidoctor *:before, .asciidoctor *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+  /* line 133, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor html, .asciidoctor body {
+    font-size: 100%; }
+  /* line 135, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor body {
+    background: white;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Serif", "DejaVu Serif", serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    position: relative;
+    cursor: auto; }
+  /* line 137, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a:hover {
+    cursor: pointer; }
+  /* line 139, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor img, .asciidoctor object, .asciidoctor embed {
+    max-width: 100%;
+    height: auto; }
+  /* line 141, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor object, .asciidoctor embed {
+    height: 100%; }
+  /* line 143, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor img {
+    -ms-interpolation-mode: bicubic; }
+  /* line 145, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor #map_canvas img, .asciidoctor #map_canvas embed, .asciidoctor #map_canvas object, .asciidoctor .map_canvas img, .asciidoctor .map_canvas embed, .asciidoctor .map_canvas object {
+    max-width: none !important; }
+  /* line 147, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .left {
+    float: left !important; }
+  /* line 149, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .right, .asciidoctor body[class$="about"] dl dd img, body[class$="about"] dl dd .asciidoctor img {
+    float: right !important; }
+  /* line 151, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .text-left {
+    text-align: left !important; }
+  /* line 153, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .text-right {
+    text-align: right !important; }
+  /* line 155, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .text-center {
+    text-align: center !important; }
+  /* line 157, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .text-justify {
+    text-align: justify !important; }
+  /* line 159, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .hide {
+    display: none; }
+  /* line 161, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .antialiased, .asciidoctor body {
+    -webkit-font-smoothing: antialiased; }
+  /* line 163, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor img {
+    display: inline-block;
+    vertical-align: middle; }
+  /* line 165, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor textarea {
+    height: auto;
+    min-height: 50px; }
+  /* line 167, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor select {
+    width: 100%; }
+  /* line 169, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor p.lead, .asciidoctor .paragraph.lead > p, .asciidoctor #preamble > .sectionbody > .paragraph:first-of-type p {
+    font-size: 1.21875em;
+    line-height: 1.6; }
+  /* line 171, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .subheader, .asciidoctor .admonitionblock td.content > .title, .asciidoctor .admonitionblock ul#downloads > li td.notes > .title, ul#downloads > li .asciidoctor .admonitionblock td.notes > .title, .asciidoctor .audioblock > .title, .asciidoctor .exampleblock > .title, .asciidoctor .imageblock > .title, .asciidoctor .listingblock > .title, .asciidoctor .literalblock > .title, .asciidoctor .stemblock > .title, .asciidoctor .openblock > .title, .asciidoctor .paragraph > .title, .asciidoctor .quoteblock > .title, .asciidoctor table.tableblock > .title, .asciidoctor .verseblock > .title, .asciidoctor .videoblock > .title, .asciidoctor .dlist > .title, .asciidoctor .olist > .title, .asciidoctor .ulist > .title, .asciidoctor .qlist > .title, .asciidoctor .hdlist > .title {
+    line-height: 1.45;
+    color: #7a2518;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0.25em; }
+  /* line 174, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor div, .asciidoctor dl, .asciidoctor dt, .asciidoctor dd, .asciidoctor ul, .asciidoctor ol, .asciidoctor li, .asciidoctor h1, .asciidoctor h2, .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor h4, .asciidoctor h5, .asciidoctor h6, .asciidoctor pre, .asciidoctor form, .asciidoctor p, .asciidoctor blockquote, .asciidoctor th, .asciidoctor td {
+    margin: 0;
+    padding: 0;
+    direction: ltr; }
+  /* line 177, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a {
+    color: #2156a5;
+    text-decoration: underline;
+    line-height: inherit; }
+  /* line 178, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a:hover, .asciidoctor a:focus {
+    color: #1d4b8f; }
+  /* line 179, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor a img {
+    border: none; }
+  /* line 182, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor p {
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    text-rendering: optimizeLegibility; }
+  /* line 183, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor p aside {
+    font-size: 0.875em;
+    line-height: 1.35;
+    font-style: italic; }
+  /* line 186, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1, .asciidoctor h2, .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor h4, .asciidoctor h5, .asciidoctor h6 {
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #ba3925;
+    text-rendering: optimizeLegibility;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.0125em; }
+  /* line 187, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1 small, .asciidoctor h2 small, .asciidoctor h3 small, .asciidoctor #toctitle small, .asciidoctor .sidebarblock > .content > .title small, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title small, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title small, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title small, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title small, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title small, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title small, .asciidoctor h4 small, .asciidoctor h5 small, .asciidoctor h6 small {
+    font-size: 60%;
+    color: #e99b8f;
+    line-height: 0; }
+  /* line 189, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1 {
+    font-size: 2.125em; }
+  /* line 191, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h2 {
+    font-size: 1.6875em; }
+  /* line 193, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title {
+    font-size: 1.375em; }
+  /* line 195, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h4 {
+    font-size: 1.125em; }
+  /* line 197, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h5 {
+    font-size: 1.125em; }
+  /* line 199, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h6 {
+    font-size: 1em; }
+  /* line 201, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor hr {
+    border: solid #ddddd8;
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 1.25em 0 1.1875em;
+    height: 0; }
+  /* line 204, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor em, .asciidoctor i {
+    font-style: italic;
+    line-height: inherit; }
+  /* line 206, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor strong, .asciidoctor b {
+    font-weight: bold;
+    line-height: inherit; }
+  /* line 208, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor small {
+    font-size: 60%;
+    line-height: inherit; }
+  /* line 210, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor code {
+    font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.9); }
+  /* line 213, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul, .asciidoctor ol, .asciidoctor dl {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    list-style-position: outside;
+    font-family: inherit; }
+  /* line 215, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul, .asciidoctor ol {
+    margin-left: 1.5em; }
+  /* line 216, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.no-bullet, .asciidoctor ul.social, .asciidoctor ul#downloads, .asciidoctor ul#docs-list, .asciidoctor ol.no-bullet, .asciidoctor ol.social {
+    margin-left: 1.5em; }
+  /* line 219, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul li ul, .asciidoctor ul li ol {
+    margin-left: 1.25em;
+    margin-bottom: 0;
+    font-size: 1em;
+    /* Override nested font-size change */ }
+  /* line 220, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.square li ul, .asciidoctor ul.circle li ul, .asciidoctor ul.disc li ul {
+    list-style: inherit; }
+  /* line 221, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.square {
+    list-style-type: square; }
+  /* line 222, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.circle {
+    list-style-type: circle; }
+  /* line 223, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.disc {
+    list-style-type: disc; }
+  /* line 224, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ul.no-bullet, .asciidoctor ul.social, .asciidoctor ul#downloads, .asciidoctor ul#docs-list {
+    list-style: none; }
+  /* line 227, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor ol li ul, .asciidoctor ol li ol {
+    margin-left: 1.25em;
+    margin-bottom: 0; }
+  /* line 230, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor dl dt {
+    margin-bottom: 0.3125em;
+    font-weight: bold; }
+  /* line 231, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor dl dd {
+    margin-bottom: 1.25em; }
+  /* line 234, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor abbr, .asciidoctor acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px dotted #dddddd;
+    cursor: help; }
+  /* line 236, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor abbr {
+    text-transform: none; }
+  /* line 239, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor blockquote {
+    margin: 0 0 1.25em;
+    padding: 0.5625em 1.25em 0 1.1875em;
+    border-left: 1px solid #dddddd; }
+  /* line 240, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor blockquote cite {
+    display: block;
+    font-size: 0.9375em;
+    color: rgba(0, 0, 0, 0.6); }
+  /* line 241, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor blockquote cite:before {
+    content: "\2014 \0020"; }
+  /* line 242, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor blockquote cite a, .asciidoctor blockquote cite a:visited {
+    color: rgba(0, 0, 0, 0.6); }
+  /* line 244, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor blockquote, .asciidoctor blockquote p {
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.85); }
+  /* line 247, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .vcard {
+    display: inline-block;
+    margin: 0 0 1.25em 0;
+    border: 1px solid #dddddd;
+    padding: 0.625em 0.75em; }
+  /* line 248, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .vcard li {
+    margin: 0;
+    display: block; }
+  /* line 249, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .vcard .fn {
+    font-weight: bold;
+    font-size: 0.9375em; }
+  /* line 251, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .vevent .summary {
+    font-weight: bold; }
+  /* line 252, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .vevent abbr {
+    cursor: auto;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    padding: 0 0.0625em; }
+  @media only screen and (min-width: 768px) {
+    /* line 254, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+    .asciidoctor h1, .asciidoctor h2, .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor h4, .asciidoctor h5, .asciidoctor h6 {
+      line-height: 1.2; }
+    /* line 255, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+    .asciidoctor h1 {
+      font-size: 2.75em; }
+    /* line 256, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+    .asciidoctor h2 {
+      font-size: 2.3125em; }
+    /* line 257, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+    .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title {
+      font-size: 1.6875em; }
+    /* line 258, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+    .asciidoctor h4 {
+      font-size: 1.4375em; } }
+  /* line 260, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table {
+    background: white;
+    margin-bottom: 1.25em;
+    border: solid 1px #dedede; }
+  /* line 261, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table thead, .asciidoctor table tfoot {
+    background: #f7f8f7;
+    font-weight: bold; }
+  /* line 262, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table thead tr th, .asciidoctor table thead tr td, .asciidoctor table tfoot tr th, .asciidoctor table tfoot tr td {
+    padding: 0.5em 0.625em 0.625em;
+    font-size: inherit;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: left; }
+  /* line 263, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table tr th, .asciidoctor table tr td {
+    padding: 0.5625em 0.625em;
+    font-size: inherit;
+    color: rgba(0, 0, 0, 0.8); }
+  /* line 264, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table tr.even, .asciidoctor table tr.alt, .asciidoctor table tr:nth-of-type(even) {
+    background: #f8f8f7; }
+  /* line 265, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor table thead tr th, .asciidoctor table tfoot tr th, .asciidoctor table tbody tr td, .asciidoctor table tr td, .asciidoctor table tfoot tr td {
+    display: table-cell;
+    line-height: 1.6; }
+  /* line 267, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1, .asciidoctor h2, .asciidoctor h3, .asciidoctor #toctitle, .asciidoctor .sidebarblock > .content > .title, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title, .asciidoctor h4, .asciidoctor h5, .asciidoctor h6 {
+    line-height: 1.2;
+    word-spacing: -0.05em; }
+  /* line 268, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor h1 strong, .asciidoctor h2 strong, .asciidoctor h3 strong, .asciidoctor #toctitle strong, .asciidoctor .sidebarblock > .content > .title strong, .asciidoctor ul#downloads > li .sidebarblock > .notes > .title strong, ul#downloads > li .asciidoctor .sidebarblock > .notes > .title strong, .asciidoctor ul#downloads > li table .sidebarblock > ul[id$="-download"] > .title strong, ul#downloads > li table .asciidoctor .sidebarblock > ul[id$="-download"] > .title strong, .asciidoctor #download > div .sidebarblock > ul[id$="-download"] > .title strong, #download > div .asciidoctor .sidebarblock > ul[id$="-download"] > .title strong, .asciidoctor h4 strong, .asciidoctor h5 strong, .asciidoctor h6 strong {
+    font-weight: 400; }
+  /* line 270, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .clearfix:before, .asciidoctor #breaking div:before, #breaking .asciidoctor div:before, .asciidoctor body[class$="about"] dl dd:before, body[class$="about"] dl .asciidoctor dd:before, .asciidoctor .clearfix:after, .asciidoctor #breaking div:after, #breaking .asciidoctor div:after, .asciidoctor body[class$="about"] dl dd:after, body[class$="about"] dl .asciidoctor dd:after, .asciidoctor .float-group:before, .asciidoctor .float-group:after {
+    content: " ";
+    display: table; }
+  /* line 271, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor .clearfix:after, .asciidoctor #breaking div:after, #breaking .asciidoctor div:after, .asciidoctor body[class$="about"] dl dd:after, body[class$="about"] dl .asciidoctor dd:after, .asciidoctor .float-group:after {
+    clear: both; }
+  /* line 273, /home/bitnami/projects/apachefriends-web/source-xampp-windows/stylesheets/asciidoctor.css */
+  .asciidoctor *:not(pre) > code {
+    font-size: 0.9375em;
+    font-style: normal !important;
+    letter-spacing: 0;
+    padding: 0.1em 0.5ex;
+    word-spacing: -0.15em;
+    background-color: #f7f7f8;ŞÎ{õşÛŸ¿ÿÁ ¶†A$ÃÿO^(ÊHíbdb6oAádıÿ+)ÂKTh#(P¾ı”V 7¸~¿ÌÌÆùıã7Bí<P ‚BŠú?ßO¼?Ñ¼ª®À#[TX¨Ô?~
+
+ãè óß¾y/ ÀÇÂÂ2Z˜‚Q0
+FÁ  DZé|õÁuU6Vä¡ úû—áüüùû7Ã¿ì4v4¼¡sûî ÷ğá3¸TÚÚš|¾VóZHØ!:FÛ(Z÷”&&Æ?~şfçeûòëÏ_×ŸÿşşËóíıoV¾ßX8DY¸D%ØÙX/^y…§‰¦¬nàZ¾__U\WQ€•…éı—?@şş—å~÷ùwÉòıÌ§tˆÏÓÒ3½v	An9½ê”Ø™ËW/F+¦EHoä1¢6 #hÀ¸{ıı?ŸîÒ'£­„Y™Xğ­1³²sqr]{úãçÿÜàFÆY¶‹OY1½`61 ò……Åmı·oßşşó{›Ø

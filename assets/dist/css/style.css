@@ -1,0 +1,122 @@
+body{
+    margin: 0px;
+}
+.main-sidebar{
+    width: 250px;  
+    background-color: rgba(217, 217, 252, 0.897); 
+    margin: 0px;
+}
+.brand-link img{
+ height: 55px;
+ width: 55px;
+}
+
+.brand-link{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.577);
+}
+
+.t-unit{
+    width: 55px;
+    text-align: center;
+    border: 1px solid #c7ccd1;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.card-body{
+    padding: 20px 15px 20px 15px !important;
+}
+
+.card-body h2{
+    font-weight: 900;
+    color: #777;
+}
+
+.inner h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.box{
+    transition: .7s;
+}
+
+.box:hover{
+    transform: scale(1.11);
+}
+
+.box .inner:hover h4{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+}
+
+.bg-course{
+    background-color: #fff;
+    color: black!important;
+    box-shadow: 3px 1px 5px gray;
+}
+
+.bg-course:hover{
+    background-color: rgba(203, 250, 241, 0.9);
+    opacity: .7;
+}
+
+.table-div i{
+    font-weight: 700;
+}
+
+.table thead tr th{
+    text-align: center;
+}
+
+.course-div{
+    justify-content: space-between!important;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.course-div select{
+    width: 75%;
+    margin-left:30px;
+}
+
+.t-center{
+    text-align: center;
+}
+
+.col-sm-6 a{
+    color: black;
+}
+
+.theader{
+    padding: 10px;
+}
+
+#tfyfs td{
+    max-width: 150px;
+}
+
+.mb-1{
+    margin-bottom: 10px;
+}
+
+@keyframes example {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.17);}
+    100% {transform: scale(1);}
+}
+
+.nav-item:hover a .nav-icon{
+    animation: example infinite;
+    animation-duration: 1s;
+}

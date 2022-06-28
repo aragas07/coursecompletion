@@ -1,0 +1,280 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DOrSU - Course Completion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/dist/img/dorsu.png">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="assets/dist/css/style.css">
+    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <div class="wrapper">
+        <?php 
+            include("database/DBConnection.php");
+            global $conn;
+            include("containers/sidebar.php");
+        ?>
+        <input type="hidden" id="page" value="4">
+        <script src="assets/dist/js/active.js"></script>
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+            </section>
+
+            <div class="main-container">
+                <div class="container-fluid">
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <input type="text" name="" placeholder="Search" id="search" class="form-control">
+                            </div>
+                            <div class="card-tools">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#adding">Add student</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>First name</th>
+                                        <th>Middle name</th>
+                                        <th>Last name</th>
+                                        <th>Birth</th>
+                                        <th>Sex</th>
+                                        <th>Address</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="s-table">
+                                </tbody>
+                            </table>
+                            <div style="margin-top: 10px">
+                                <ul id="paging" class="pagination pagination-sm m-0 float-right">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.content -->
+        </div>
+        
+        <div class="modal fade" id="adding">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Student</h4>
+                        <button type="button" class="close" id="add-modal" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation" id="forms" novalidate>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <img id="pro-image" src="assets/dist/img/profile.png" class="col-md-11" style="margin-bottom: 5px;">
+                                    <button id="custom-btn" class="btn btn-primary col-md-11" type="button">CHOOSE IMAGE</button>
+                                    <input type="file" name="file" class="f-input" accept="image/x-png,image/gif,image/jpeg" hidden id="default-btn">
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group row">
+                                        <label class="col-sm-12 fol-form-label">ID :
+                                            <input type="text" name="studId" required class="form-control form-control-sm f-input">
+                                        </label>
+                                        <label class="col-sm-12 fol-form-label">First name :
+                                            <input type="text" name="fname" required class="form-control form-control-sm f-input">
+                                        </label>
+                                        <label class="col-sm-12 fol-form-label">Middle name :
+                                            <input type="text" name="mname" required class="form-control form-control-sm f-input">
+                                        </label>
+                                        <label class="col-sm-12 fol-form-label">Last name :
+                                            <input type="text" name="lname" required class="form-control form-control-sm f-input">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 fol-form-label">Birth date :</label>
+                                <div class="col-sm-4">
+                                    <input name="bday" type="date" required class="form-control form-control-sm f-input">
+                                </div>
+                                <label class="col-sm-2 fol-form-label">Sex :</label>
+                                <div class="col-sm-4">
+                                    <select name="gender" class="form-control form-control-sm">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 fol-form-label">Address :</label>
+                                <div class="col-sm-10">
+                                    <input name="address" type="text" required class="form-control form-control-sm f-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 fol-form-label">Email :</label>
+                                <div class="col-sm-10">
+                                    <input name="email" type="email" required class="form-control form-control-sm f-input">
+                                </div>
+                            </div>
+                            <input type="text" hidden required>
+                            <div class="col-12">
+                                <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>tt
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="enrol">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Enrolled At</h4>
+                        <button type="button" class="close" id="add-modal" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 id="course-title"></h1>
+                        <h2 id="course-cur"></h2>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button id="vgrade" class="btn btn-default">View grades</button>
+                        <button id="change-course" class="btn btn-primary">Change course</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
+
+    </div>
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#forms").on('submit', function(event){
+                event.preventDefault();
+                $.ajax({
+                    url: 'database/DBManipulation.php',
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType:false,
+                    cache: false,
+                    processData: false,
+                    success: function(result){
+                        $(".f-input").each(function(){
+                            $(this).val(null);
+                            $("#pro-image").attr("src", "assets/dist/img/profile.png");
+                        })
+                        toastr.success("Success to insert");
+                        load($("#search").val(),1);
+                        paging($("#search").val(),1);
+                        $("#adding").modal("hide");
+                    }
+                })
+            })
+
+            var b = true,
+            studId = 0;
+            $("#search").keyup(function() {
+                load($(this).val(),1);
+                paging($(this).val(),1);
+            })
+            paging('',1);
+            load('',1);
+            function paging(search,id){
+                $.ajax({
+                    url: 'containers/query.php',
+                    type: 'post',
+                    data: {subjectpaging: id,searching: search, type: "student"},
+                    success: function(result){
+                        $("#paging").html(result);
+                        $(".page-link").click(function(){
+                            var chunk = $(this).attr('class').split(" ");
+                            paging($("#search").val(),chunk[1]);
+                            load($("#search").val(),chunk[1]);
+                        })
+                    }
+                })
+            }
+
+            function load(text,page) {
+                $.ajax({
+                    url: 'containers/query.php',
+                    type: 'post',
+                    data: {disStudent: text, page: page},
+                    success: function(result) {
+                        $("#s-table").html(result);
+                        $(".data").click(function() {
+                            $("#stud-id").val($(this).attr('id'));
+                        })
+                        $(".enrolled").click(function() {
+                            $split = $(this).attr('id').split('||');
+                            $("#vgrade").click(function(){
+                                window.location.href = 'grades.php?id='+$split[0];
+                            })
+                            $("#change-course").click(function(){
+                                window.location.href = "enrollment.php?id="+$split[0];
+                            })
+                            $("#course-cur").text("Curriculum number: " + $split[2]);
+                            $.ajax({
+                                url: 'containers/query.php',
+                                type: 'post',
+                                data: {getCourseName: $split[1]},
+                                success: function(result) {
+                                    $("#course-title").text(result);
+                                }
+                            })
+                        })
+                    }
+                })
+            }
+        })
+        const custom = document.querySelector("#custom-btn"),
+        defaultbtn = document.querySelector("#default-btn"),
+        img = document.querySelector("#pro-image");
+        custom.addEventListener("click", function(){
+            defaultbtn.click();
+        });
+
+        defaultbtn.addEventListener("change", function(){
+            const file = defaultbtn.files[0];
+            if(file){
+                const reader = new FileReader();
+                reader.onload = function(){
+                    const result = reader.result;
+                    img.src = result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+    </script>
+
+    <script src="assets/dist/js/validation.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/dist/js/pages/adminlte.min.js"></script>
+
+</body>
+
+</html>

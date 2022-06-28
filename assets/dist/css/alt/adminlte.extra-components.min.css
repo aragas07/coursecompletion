@@ -1,0 +1,359 @@
+  }
+
+        $tagOrder = $this->commentParser->getTagOrders();
+        $index    = array_keys($this->commentParser->getTagOrders(), 'throws');
+
+        foreach ($this->commentParser->getThrows() as $i => $throw) {
+            $exception = $throw->getValue();
+            $content   = trim($throw->getComment());
+            $errorPos  = ($commentStart + $throw->getLine());
+            if (empty($exception) === true) {
+                $error = 'Exception type and comment missing for @throws tag in function comment';
+                $this->currentFile->addError($error, $errorPos, 'InvalidThrows');
+            } else if (empty($content) === true) {
+                $error = 'Comment missing for @throws tag in function comment';
+                $this->currentFile->addError($error, $errorPos, 'EmptyThrows');
+            } else {
+                // Starts with a capital letter and ends with a fullstop.
+                $firstChar = $content{0};
+                if (strtoupper($firstChar) !== $firstChar) {
+                    $error = '@throws tag comment must start with a capital letter';
+                    $this->currentFile->addError($error, $errorPos, 'ThrowsNotCapital');
+                }
+
+                $lastChar = $content[(strlen($content) - 1)];
+                if ($lastChar !== '.') {
+                    $error = '@throws tag comment must end with a full stop';
+                    $this->currentFile->addError($error, $errorPos, 'ThrowsNoFullStop');
+                }
+            }
+
+            $since = array_keys($tagOrder, 'since');
+            if (count($since) === 1 && $this->_tagIndex !== 0) {
+                $this->_tagIndex++;
+                if ($index[$i] !== $this->_tagIndex) {
+                    $error = 'The @throws tag is in the wrong order; the tag follows @return';
+                    $this->currentFile->addError($error, $errorPos, 'ThrowsOrder');
+                }
+            }
+        }//end foreach
+
+    }//end processThrows()
+
+
+    /**
+     * Process the function parameter comments.
+     *
+     * @param int $commentStart The position in the stack where
+     *                          the comment started.
+     * @param int $commentEnd   The position in the stack where
+     *                          the comment ended.
+     *
+     * @return void
+     */
+    protected function processParams($commentStart, $commentEnd)
+    {
+        $realParams  = $this->currentFile->getMethodParameters($this->_functionToken);
+        $params      = $this->commentParser->getParams();
+        $foundParams = array();
+
+        if (empty($params) === false) {
+
+            if (substr_count($params[(count($params) - 1)]->getWhitespaceAfter(), $this->currentFile->eolChar) !== 2) {
+                $error    = 'Last parameter comment requires a blank newline after it';
+                $errorPos = ($params[(count($params) - 1)]->getLine() + $commentStart);
+                $this->currentFile->addError($error, $errorPos, 'SpacingAfterParams');
+            }
+
+            // Parameters must appear immediately after the comment.
+            if ($params[0]->getOrder() !== 2) {
+                $error    = 'Parameters must appear immediately after the comment';
+                $errorPos = ($params[0]->getLine() + $commentStart);
+                $this->currentFile->addError($error, $errorPos, 'SpacingBeforeParams');
+            }
+
+            $previousParam      = null;
+            $spaceBeforeVar     = 10000;
+            $spaceBeforeComment = 10000;
+            $longestType        = 0;
+            $longestVar         = 0;
+
+            foreach ($params as $param) {
+
+                $paramComment = trim($param->getComment());
+                $errorPos     = ($param->getLine() + $commentStart);
+
+                // Make sure that there is only one space before the var type.
+                if ($param->getWhitespaceBeforeType() !== ' ') {
+                    $error = 'Expected 1 space before variable type';
+                    $this->currentFile->addError($error, $errorPos, 'SpacingBeforeParamType');
+                }
+
+                $spaceCount = substr_count($param->getWhitespaceBeforeVarName(), ' ');
+                if ($spaceCount < $spaceBeforeVar) {
+                    $spaceBeforeVar = $spaceCount;
+                    $longestType    = $errorPos;
+                }
+
+                $spaceCount = substr_count($param->getWhitespaceBeforeComment(), ' ');
+
+                if ($spaceCount < $spaceBeforeComment && $paramComment !== '') {
+                    $spaceBeforeComment = $spaceCount;
+                    $longestVar         = $errorPos;
+                }
+
+                // Make sure they are in the correct order, and have the correct name.
+                $pos       = $param->getPosition();
+                $paramName = ($param->getVarName() !== '') ? $param->getVarName() : '[ UNKNOWN ]';
+
+                if ($previousParam !== null) {
+                    $previousName = ($previousParam->getVarName() !== '') ? $previousParam->getVarName() : 'UNKNOWN';
+
+                    // Check to see if the parameters align properly.
+                    if ($param->alignsVariableWith($previousParam) === false) {
+                        $error = 'The variable names for parameters %s (%s) and %s (%s) do not align';
+                        $data  = array(
+                                  $previousName,
+                                  ($pos - 1),
+                                  $paramName,
+                                  $pos,
+                                 );
+                        $this->currentFile->addError($error, $errorPos, 'ParameterNamesNotAligned', $data);
+                    }
+
+                    if ($param->alignsCommentWith($previousParam) === false) {
+                        $error = 'The comments for parameters %s (%s) and %s (%s) do not align';
+                        $data  = array(
+                                  $previousName,
+                                  ($pos - 1),
+                                  $paramName,
+                                  $pos,
+                                 );
+                        $this->currentFile->addError($error, $errorPos, 'ParameterCommentsNotAligned', $data);
+                    }
+                }
+
+                // Variable must be one of the supported standard type.
+                $typeNames = explode('|', $param->getType());
+                foreach ($typeNames as $typeName) {
+                    $suggestedName = PHP_CodeSniffer::suggestType($typeName);
+                    if ($typeName !== $suggestedName) {
+                        $error = 'Expected "%s"; found "%s" for %s at position %s';
+                        $data  = array(
+                                  $suggestedName,
+                                  $typeName,
+                                  $paramName,
+                                  $pos,
+                                 );
+                        $this->currentFile->addError($error, $errorPos, 'IncorrectParamVarName', $data);
+                    } else if (count($typeNames) === 1) {
+                        // Check type hint for array and custom type.
+                        $suggestedTypeHint = '';
+                        if (strpos($suggestedName, 'array') !== false) {
+                            $suggestedTypeHint = 'array';
+                        } else if (in_array($typeName, PHP_CodeSniffer::$allowedTypes) === false) {
+                            $suggestedTypeHint = $suggestedName;
+                        }
+
+                        if ($suggestedTypeHint !== '' && isset($realParams[($pos - 1)]) === true) {
+                            $typeHint = $realParams[($pos - 1)]['type_hint'];
+                            if ($typeHint === '') {
+                                $error = 'Type hint "%s" missing for %s at position %s';
+                                $data  = array(
+                                          $suggestedTypeHint,
+                                          $paramName,
+                                          $pos,
+                                         );
+                                $this->currentFile->addError($error, ($commentEnd + 2), 'TypeHintMissing', $data);
+                            } else if ($typeHint !== $suggestedTypeHint) {
+                                $error = 'Expected type hint "%s"; found "%s" for %s at position %s';
+                                $data  = array(
+                                          $suggestedTypeHint,
+                                          $typeHint,
+                                          $paramName,
+                                          $pos,
+                                         );
+                                $this->currentFile->addError($error, ($commentEnd + 2), 'IncorrectTypeHint', $data);
+                            }
+                        } else if ($suggestedTypeHint === '' && isset($realParams[($pos - 1)]) === true) {
+                            $typeHint = $realParams[($pos - 1)]['type_hint'];
+                            if ($typeHint !== '') {
+                                $error = 'Unknown type hint "%s" found for %s at position %s';
+                                $data  = array(
+                                          $typeHint,
+                                          $paramName,
+                                          $pos,
+                                         );
+                                $this->currentFile->addError($error, ($commentEnd + 2), 'InvalidTypeHint', $data);
+                            }
+                        }
+                    }//end if
+                }//end foreach
+
+                // Make sure the names of the parameter comment matches the
+                // actual parameter.
+                if (isset($realParams[($pos - 1)]) === true) {
+                    $realName      = $realParams[($pos - 1)]['name'];
+                    $foundParams[] = $realName;
+
+                    // Append ampersand to name if passing by reference.
+                    if ($realParams[($pos - 1)]['pass_by_reference'] === true) {
+                        $realName = '&'.$realName;
+                    }
+
+                    if ($realName !== $paramName) {
+                        $code = 'ParamNameNoMatch';
+                        $data = array(
+                                    $paramName,
+                                    $realName,
+                                    $pos,
+                                );
+
+                        $error  = 'Doc comment for var %s does not match ';
+                        if (strtolower($paramName) === strtolower($realName)) {
+                            $error .= 'case of ';
+                            $code   = 'ParamNameNoCaseMatch';
+                        }
+
+                        $error .= 'actual variable name %s at position %s';
+
+                        $this->currentFile->addError($error, $errorPos, $code, $data);
+                    }
+                } else {
+                    // We must have an extra parameter comment.
+                    $error = 'Superfluous doc comment at position '.$pos;
+                    $this->currentFile->addError($error, $errorPos, 'ExtraParamComment');
+                }
+
+                if ($param->getVarName() === '') {
+                    $error = 'Missing parameter name at position '.$pos;
+                     $this->currentFile->addError($error, $errorPos, 'MissingParamName');
+                }
+
+                if ($param->getType() === '') {
+                    $error = 'Missing type at position '.$pos;
+                    $this->currentFile->addError($error, $errorPos, 'MissingParamType');
+                }
+
+                if ($paramComment === '') {
+                    $error = 'Missing comment for param "%s" at position %s';
+                    $data  = array(
+                              $paramName,
+                              $pos,
+                             );
+                    $this->currentFile->addError($error, $errorPos, 'MissingParamComment', $data);
+                } else {
+                    // Param comments must start with a capital letter and
+                    // end with the full stop.
+                    $firstChar = $paramComment{0};
+                    if (preg_match('|[A-Z]|', $firstChar) === 0) {
+                        $error = 'Param comment must start with a capital letter';
+                        $this->currentFile->addError($error, $errorPos, 'ParamCommentNotCapital');
+                    }
+
+                    $lastChar = $paramComment[(strlen($paramComment) - 1)];
+                    if ($lastChar !== '.') {
+                        $error = 'Param comment must end with a full stop';
+                        $this->currentFile->addError($error, $errorPos, 'ParamCommentFullStop');
+                    }
+                }
+
+                $previousParam = $param;
+
+            }//end foreach
+
+            if ($spaceBeforeVar !== 1 && $spaceBeforeVar !== 10000 && $spaceBeforeComment !== 10000) {
+                $error = 'Expected 1 space after the longest type';
+                $this->currentFile->addError($error, $longestType, 'SpacingAfterLongType');
+            }
+
+            if ($spaceBeforeComment !== 1 && $spaceBeforeComment !== 10000) {
+                $error = 'Expected 1 space after the longest variable name';
+                $this->currentFile->addError($error, $longestVar, 'SpacingAfterLongName');
+            }
+
+        }//end if
+
+        $realNames = array();
+        foreach ($realParams as $realParam) {
+            $realNames[] = $realParam['name'];
+        }
+
+        // Report missing comments.
+        $diff = array_diff($realNames, $foundParams);
+        foreach ($diff as $neededParam) {
+            if (count($params) !== 0) {
+                $errorPos = ($params[(count($params) - 1)]->getLine() + $commentStart);
+            } else {
+                $errorPos = $commentStart;
+            }
+
+            $error = 'Doc comment for "%s" missing';
+            $data  = array($neededParam);
+            $this->currentFile->addError($error, $errorPos, 'MissingParamTag', $data);
+        }
+
+    }//end processParams()
+
+
+    /**
+     * Process a list of unknown tags.
+     *
+     * @param int $commentStart The position in the stack where the comment started.
+     * @param int $commentEnd   The position in the stack where the comment ended.
+     *
+     * @return void
+     */
+    protected function processUnknownTags($commentStart, $commentEnd)
+    {
+        $unknownTags = $this->commentParser->getUnknown();
+        foreach ($unknownTags as $errorTag) {
+            $error = '@%s tag is not allowed in function comment';
+            $data  = array($errorTag['tag']);
+            $this->currentFile->addWarning($error, ($commentStart + $errorTag['line']), 'TagNotAllowed', $data);
+        }
+
+    }//end processUnknownTags
+
+
+}//end class
+
+?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <?php
+
+/*
+V5.18 3 Sep 2012  (c) 2000-2012 John Lim (jlim#natsoft.com). All rights reserved.
+         Contributed by Ross Smith (adodb@netebb.com). 
+  Released under both BSD license and Lesser GPL library license.
+  Whenever there is any discrepancy between the two licenses,
+  the BSD license will take precedence.
+	  Set tabs to 4 for best viewing.
+
+*/
+
+// security - hide paths
+if (!defined('ADODB_SESSION')) die();
+
+include_once ADODB_SESSION . '/crypt.inc.php';
+
+/**
+ */
+class ADODB_Encrypt_MD5 {
+	/**
+	 */
+	function write($data, $key) {
+		$md5crypt = new MD5Crypt();
+		return $md5crypt->encrypt($data, $key);
+	}
+
+	/**
+	 */
+	function read($data, $key) {
+		$md5crypt = new MD5Crypt();
+		return $md5crypt->decrypt($data, $key);
+	}
+
+}
+
+return 1;
+
+?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
