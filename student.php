@@ -39,7 +39,7 @@
                                 <input type="text" name="" placeholder="Search" id="search" class="form-control">
                             </div>
                             <div class="card-tools">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#adding">Add student</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#choices">Add student</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -70,12 +70,26 @@
 
             <!-- /.content -->
         </div>
+
+        <div class="modal fade" id="choices">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content p-3">
+                    <div class="form-group">
+                        <button class="btn btn-outline-secondary col-12" data-toggle="modal" data-target="#adding">New Student</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-secondary col-12" data-toggle="modal" data-target="#upl-csv">Upload CSV</button>
+                    </div>
+                        <button class="btn btn-outline-danger col-12" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
         
         <div class="modal fade" id="adding">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Student</h4>
+                        <h4 class="modal-title">New Student</h4>
                         <button type="button" class="close" id="add-modal" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -135,7 +149,7 @@
                                 <button class="btn btn-primary" id="submit" type="submit">Submit</button>
                             </div>
                         </form>
-                    </div>tt
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,9 +172,33 @@
                         <button id="change-course" class="btn btn-primary">Change course</button>
                     </div>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+        </div>
+        
+        <div class="modal fade" id="upl-csv">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Upload file</h4>
+                        <button type="button" class="close" id="add-modal" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="" method="post">
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <h1>File format for the column header</h1>
+                                <h3>Id, First name, Middle name, Last name, Birth date, Sex, Address, Email</h3>
+                            </div>
+                            <input type="file" name="file">
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                            <button id="change-course" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <aside class="control-sidebar control-sidebar-dark">
