@@ -106,9 +106,7 @@
             echo 'error';
         }
     }else if(isset($_FILES['studentfile']['name'])){
-        // echo json_encode(['success'=>false,'response'=>'Please select valid files sample']);
         $csvFile = fopen($_FILES['studentfile']['tmp_name'], 'r');
-        // fgetcsv($csvFile);
         $bool = false;
         $response = '';
         while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
@@ -129,16 +127,34 @@
                 if ($check->num_rows == 0){
                     mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email) VALUES('$id','$fname','$mname','$lname','$bday','$sex','$address','$email')");
                 }
-                $response = 'Successfully to upload the file.';
+                $response = 'The file has been uploaded.';
             }else{
                 $response = "The file format is incorrect.";
             }
-            // mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email) VALUES('$id','$fname','$mname','$lname,'$bday','$sex','$address','$email')");
         }
-        // fclose($csvFile);
         echo json_encode(['success'=>$bool,'response'=>$response]);
-    }else if(isset($FILES['subjectfile']['name'])){
-        
+    }else if(isset($_FILES['subjectfile']['name'])){
+        $csvFile = fopen($_FILES['subjectfile']['tmp_name'], 'r');
+        $bool = false;
+        $response = '';
+        while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
+            $course = $getData[0];
+            $description = $getData[1];
+            $unit = $getData[2];
+            if(strtolower($course) == 'course no.' && strtolower($description) == 'description' && strtolower($unit) == 'unit' ){
+                $bool = true;
+            }else if($bool){
+                $query = "SELECT id FROM subject WHERE course_num = '$course' AND subject_description = '$description'";
+                $check = mysqli_query($conn, $query);
+                if ($check->num_rows == 0){
+                    mysqli_query($conn, "INSERT INTO subject(course_num, subject_description, unit) VALUES('$course','$description','$unit')");
+                }
+                $response = 'The file has been uploaded.';
+            }else{
+                $response = "The file format is incorrect.";
+            }
+        }
+        echo json_encode(['success'=>$bool,'response'=>$response]);
     }
     
 ?>

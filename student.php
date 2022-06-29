@@ -234,7 +234,6 @@
 
             $("#upcsv").submit(function(e){
                 e.preventDefault();
-                console.log('sample');
                 $.ajax({
                     url: 'database/DBManipulation.php',
                     type: 'post',

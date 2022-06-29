@@ -27,7 +27,6 @@
         <input type="hidden" id="page" value="3">
         <script src="assets/dist/js/active.js"></script>
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
             </section>
 
@@ -86,16 +85,16 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="database/DBManipulation.php" method="post">
+                        <form id="upcsv" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="text-center">
                                     <h1>File format for the column header</h1>
                                     <h3>Course no., Description, Unit</h3>
                                 </div>
-                                <input type="file" class="form-control" name="subject-file">
+                                <input type="file" class="form-control" name="subjectfile">
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                                 <button id="change-course" class="btn btn-primary">Upload</button>
                             </div>
                         </form>
@@ -160,6 +159,31 @@
 
     <script>
         $(function(){
+            $("#upcsv").submit(function(e){
+                e.preventDefault();
+                console.log("example");
+                $.ajax({
+                    url: 'database/DBManipulation.php',
+                    type: 'post',
+                    data: new FormData(this),
+                    dataType: 'json',
+                    contentType:false,
+                    cache: false,
+                    processData: false,
+                    success: function(result){
+                        console.log(result);
+                        if(result.success){
+                            toastr.success(result.response);
+                            setTimeout(function(){
+                                location.reload();
+                            },1300);
+                        }else{
+                            toastr.error(result.response);
+                        }
+                    }
+                })
+            })
+
             $("#add-sub").click(function(){
                 var b = true;
                 $(".s-cont").each(function(){
