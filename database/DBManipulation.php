@@ -105,5 +105,40 @@
         }else{
             echo 'error';
         }
+    }else if(isset($_FILES['studentfile']['name'])){
+        // echo json_encode(['success'=>false,'response'=>'Please select valid files sample']);
+        $csvFile = fopen($_FILES['studentfile']['tmp_name'], 'r');
+        // fgetcsv($csvFile);
+        $bool = false;
+        $response = '';
+        while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
+            $id = $getData[0];
+            $fname = $getData[1];
+            $mname = $getData[2];
+            $lname = $getData[3];
+            $bday = $getData[4];
+            $sex = $getData[5];
+            $address = $getData[6];
+            $email = $getData[7];
+            if(strtolower($id) == 'id' && strtolower($fname) == 'first name' && strtolower($mname) == 'middle name' && strtolower($lname) == 'last name' && 
+            strtolower($bday) == 'birth date' && strtolower($sex) == 'sex' && strtolower($address) == 'address' && strtolower($email) == 'email'){
+                $bool = true;
+            }else if($bool){
+                $query = "SELECT id FROM student WHERE email = '$email' AND id = '$id'";
+                $check = mysqli_query($conn, $query);
+                if ($check->num_rows == 0){
+                    mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email) VALUES('$id','$fname','$mname','$lname','$bday','$sex','$address','$email')");
+                }
+                $response = 'Successfully to upload the file.';
+            }else{
+                $response = "The file format is incorrect.";
+            }
+            // mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email) VALUES('$id','$fname','$mname','$lname,'$bday','$sex','$address','$email')");
+        }
+        // fclose($csvFile);
+        echo json_encode(['success'=>$bool,'response'=>$response]);
+    }else if(isset($FILES['subjectfile']['name'])){
+        
     }
+    
 ?>

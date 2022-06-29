@@ -184,16 +184,16 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form id="upcsv" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="text-center">
                                 <h1>File format for the column header</h1>
                                 <h3>Id, First name, Middle name, Last name, Birth date, Sex, Address, Email</h3>
                             </div>
-                            <input type="file" name="file">
+                            <input type="file" accept=".csv" class="form-control" name="studentfile">
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button data-dismiss="modal" class="btn btn-default">Cancel</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                             <button id="change-course" class="btn btn-primary">Upload</button>
                         </div>
                     </form>
@@ -228,6 +228,31 @@
                         load($("#search").val(),1);
                         paging($("#search").val(),1);
                         $("#adding").modal("hide");
+                    }
+                })
+            })
+
+            $("#upcsv").submit(function(e){
+                e.preventDefault();
+                console.log('sample');
+                $.ajax({
+                    url: 'database/DBManipulation.php',
+                    type: 'post',
+                    data: new FormData(this),
+                    dataType: 'json',
+                    contentType:false,
+                    cache: false,
+                    processData: false,
+                    success: function(result){
+                        console.log(result);
+                        if(result.success){
+                            toastr.success(result.response);
+                            setTimeout(function(){
+                                location.reload();
+                            },1300);
+                        }else{
+                            toastr.error(result.response);
+                        }
                     }
                 })
             })
