@@ -14,7 +14,19 @@
     <link rel="stylesheet" href="assets/dist/css/style.css">
     <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <style>
+        #loading{
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 100vh; 
+            width: 100vw; 
+            background-color: #5a5a5a49;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
     <!-- CHANGES -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <!-- END OF CHANGES -->
@@ -280,8 +292,9 @@
         </div>
 
     </div>
-    <aside class="control-sidebar control-sidebar-dark">
-    </aside>
+    <div id="loading">
+        <i class="fa fa-spinner fa-spin" style="font-size:72px; color: white"></i>
+    </div>
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <script src="assets/plugins/toastr/toastr.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
