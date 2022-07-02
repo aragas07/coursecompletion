@@ -32,11 +32,11 @@
             <div class="main-container">
                 <div class="container-fluid">
                     <div class="card">
-                        <div class="card-header">
+                        <!-- <div class="card-header">
                             <div class="card-tools">
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#adding">Add</button>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="card-body" id="index-body">
                         </div>
@@ -114,31 +114,31 @@
             })
         }
         displaycourse();
-        $("#submit").click(function() {
-            if ($("#course").val().length > 0) {
-                $course = $("#course").val();
-                $ins = $("#institute").val();
-                $.ajax({
-                    url: location,
-                    type: 'post',
-                    data: {
-                        course: $course,
-                        ins: $ins
-                    },
-                    success: function(result) {
-                        if (result == 'error') toastr.error(
-                            'Sorry you are not able to added data')
-                        else if (result == 'exist') toastr.info(
-                            'Sorry the data is existed')
-                        else {
-                            toastr.success('Successfully to added a course');
-                            $("#adding").modal('hide');
-                            displaycourse();
-                        }
-                    }
-                })
-            }
-        })
+        // $("#submit").click(function() {
+        //     if ($("#course").val().length > 0) {
+        //         $course = $("#course").val();
+        //         $ins = $("#institute").val();
+        //         $.ajax({
+        //             url: location,
+        //             type: 'post',
+        //             data: {
+        //                 course: $course,
+        //                 ins: $ins
+        //             },
+        //             success: function(result) {
+        //                 if (result == 'error') toastr.error(
+        //                     'Sorry you are not able to added data')
+        //                 else if (result == 'exist') toastr.info(
+        //                     'Sorry the data is existed')
+        //                 else {
+        //                     toastr.success('Successfully to added a course');
+        //                     $("#adding").modal('hide');
+        //                     displaycourse();
+        //                 }
+        //             }
+        //         })
+        //     }
+        // })
         var forms = document.querySelectorAll('.needs-validation');
 
         Array.prototype.slice.call(forms)

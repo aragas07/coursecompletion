@@ -21,7 +21,7 @@
             left: 0; 
             height: 100vh; 
             width: 100vw; 
-            background-color: #5a5a5a49;
+            background-color: #5a5a5a77;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -258,6 +258,7 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <button class="btn btn-danger" id="prospectus-send-email">Send prospectus to email</button>
                                 </div>
                                 <div class="chart tab-pane active row" id="grades" style="position: relative">
                                     <div class="col-md-12" style="margin-bottom: 20px">
@@ -292,7 +293,7 @@
         </div>
 
     </div>
-    <div id="loading">
+    <div id="loading" hidden>
         <i class="fa fa-spinner fa-spin" style="font-size:72px; color: white"></i>
     </div>
     <script src="assets/plugins/jquery/jquery.min.js"></script>
@@ -310,7 +311,7 @@
         })
 
         search($("#search").val(), true);
-
+        let prospectus = '';
         function search(text, b) {
             if (text.length > 4) {
                 $.ajax({
@@ -329,6 +330,16 @@
                                 $("#gender").val(split[5]);
                                 $("#email").val(split[6]);
                                 $("#course").val(split[7]);
+                                $courseid = split[8];
+                                $curriculum = split[9];
+                                $.ajax({
+                                    url:'containers/query.php',
+                                    type: 'post',
+                                    data: {getsubject: $courseid, number: $curriculum, studentid: ''},
+                                    success: function(res){
+                                        prospectus = res;
+                                    }
+                                })
                                 //$("#info").html(split[2]);
                                 $.ajax({
                                     url: 'containers/query.php',
@@ -520,7 +531,25 @@
         }
 
         // CHANGES
+
+        $("#prospectus-send-email").click(() => {
+            $("#loading").prop('hidden', false);
+            const email = $("#email").val().trim()
+            const emailFilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+            
+            $.ajax({
+                url: 'containers/prospectusMail.php',
+                type: 'post',
+                data:{data: prospectus, email: email},
+                success: function(data){
+                    toastr.success(data);
+                    $("#loading").prop('hidden', true);
+                }
+            })
+        })
+
         $('#send-email-btn').click(() => {
+            $("#loading").prop('hidden', false);
             const email = $("#email").val().trim()
             const emailFilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
             const data = $('#emailGrades').html()
@@ -529,7 +558,8 @@
                 type: 'post',
                 data:{data: data, email: email},
                 success: function(data){
-                    alert(data)
+                    toastr.success(data);
+                    $("#loading").prop('hidden', true);
                 }
             })
             // if (!emailFilter.test(email)) {
@@ -547,7 +577,6 @@
             //     });
             // }
         })
-        // END OF CHANGES
     })
     </script>
 

@@ -18,7 +18,7 @@
                 $profile = "upload/".$row['profile'];
             }
             echo $row['course_id'].'||'.$row['curriculum'].'||'.$profile.'||'.$row['lname'].' '.$row['fname'].'||'.$row['bday'].'||'.$row['gender'].
-            '||'.$row['email'].'||'.$row['name'];
+            '||'.$row['email'].'||'.$row['name'].'||'.$row['course_id'].'||'.$row['curriculum'];
         }
     }else if(isset($_POST['getsubject'])){
         $subjects = array();
@@ -46,7 +46,7 @@
                     $subject->grade = $grade['grades'];
                     $subject->comply = $grade['comply'];
                 }
-                $getPre = $conn->query("SELECT * FROM curriculum AS c INNER JOIN subject AS s ON c.prerequisites = s.id WHERE c.course_id = $courseid AND number = $number AND subject_id = ".$row['subject_id']);
+                $getPre = $conn->query("SELECT * FROM curriculum AS c INNER JOIN subject AS s ON c.prerequisites = s.id WHERE c.course_id = $courseid AND number = $number AND subject_id = ".$row['subject_id']." GROUP BY course_num");
                 
                 $pre = '';
                 $count = 0;
@@ -68,6 +68,30 @@
                 array_push($subjects,$subject);
             }
             echo '<div class="table-div">
+                <style>
+                    .table{
+                        text-indent: initial;
+                        border-spacing: 2px;
+                        border-collapse: collapse;
+                    }
+                    .table-bordered td, .table-bordered th {
+                        border: 1px solid #dee2e6;
+                    }
+                    .table td, .table th {
+                        padding: 0.75rem;
+                        vertical-align: top;
+                        border-top: 1px solid #dee2e6;
+                    }
+                    th {
+                        text-align: inherit;
+                        font-weight: bold;
+                        display: table-cell;
+                    }
+                    .descrip{
+                        min-width: 250px;
+                        width: 250px;
+                    }
+                </style>
                 <h2>1st year</h2>
                 <table class="table table-bordered">
                     <thead>
@@ -83,7 +107,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">Course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -121,7 +145,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -165,7 +189,7 @@
                         <thead>
                             <tr>
                                 <th>Course no.</th>
-                                <th>Description</th>
+                                <th class="descrip">Description</th>
                                 <th>Unit</th>
                                 <th style="width:150px">Prerequisites</th>';
                                 if($student != ''){
@@ -215,7 +239,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -253,7 +277,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -297,7 +321,7 @@
                         <thead>
                             <tr>
                                 <th>Course no.</th>
-                                <th>Description</th>
+                                <th class="descrip">Description</th>
                                 <th>Unit</th>
                                 <th style="width:150px">Prerequisites</th>';
                                 if($student != ''){
@@ -347,7 +371,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -385,7 +409,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -429,7 +453,7 @@
                         <thead>
                             <tr>
                                 <th>Course no.</th>
-                                <th>Description</th>
+                                <th class="descrip">Description</th>
                                 <th>Unit</th>
                                 <th style="width:150px">Prerequisites</th>';
                                 if($student != ''){
@@ -479,7 +503,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -517,7 +541,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width:100px">course no.</th>
-                                            <th>Description</th>
+                                            <th class="descrip">Description</th>
                                             <th style="width:75px">Unit</th>
                                             <th style="width:150px">Prerequisites</th>';
                                             if($student != ''){
@@ -562,7 +586,7 @@
                         <thead>
                             <tr>
                                 <th>Course no.</th>
-                                <th>Description</th>
+                                <th class="descrip">Description</th>
                                 <th>Unit</th>
                                 <th style="width:150px">Prerequisites</th>';
                                 if($student != ''){
@@ -613,7 +637,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:100px">course no.</th>
-                                                <th>Description</th>
+                                                <th class="descrip">Description</th>
                                                 <th style="width:75px">Unit</th>
                                                 <th style="width:150px">Prerequisites</th>';
                                                 if($student != ''){
@@ -651,7 +675,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:100px">course no.</th>
-                                                <th>Description</th>
+                                                <th class="descrip">Description</th>
                                                 <th style="width:75px">Unit</th>
                                                 <th style="width:150px">Prerequisites</th>';
                                                 if($student != ''){
@@ -734,11 +758,11 @@
             }else{ echo 'error';}
         }
     }else if(isset($_POST['displaycourse'])){
-        $getInstitute = $conn->query("SELECT * FROM institute");
+        $getInstitute = $conn->query("SELECT * FROM institute ORDER BY name ASC");
         while($institute = $getInstitute->fetch_assoc()){
             echo '<div style="border-bottom: 1px solid gray;margin-bottom:47px;"><h2>'.$institute['name'].'</h2>
             <div class="row">';
-            $getCourse = $conn->query("SELECT * FROM course where institute_id = ".$institute['id']);
+            $getCourse = $conn->query("SELECT * FROM course where institute_id = ".$institute['id']." order by name asc");
             while($course = $getCourse->fetch_assoc()){
                 $getSCount = $conn->query("SELECT count(*) AS total FROM course INNER JOIN student ON course.id = student.course_id WHERE student.course_id = ".$course['id']);
                 while($count = $getSCount->fetch_assoc()){
