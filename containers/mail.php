@@ -15,11 +15,11 @@ try {
     $mail->SMTPSecure = 'tls';         
     $mail->Port       = 587;   
     
-    $email = $_POST['email'];
+    //$email = $_POST['email'];
+    $email = 'argie.ragas@dorsu.edu.ph';
     $mail->setFrom('julius_evan.rivas@dorsu.edu.ph','DOrSU grades');
     $mail->addAddress($email);
-    $mail->isHTML(true);   
-    $mail->addAttachment('prospectus.pdf');                               
+    $mail->isHTML(true);             
     $mail->Subject = "DOrSU";
     $mail->Body    = $_POST['data'];
     $mail->send();

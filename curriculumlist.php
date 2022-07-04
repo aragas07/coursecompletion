@@ -34,7 +34,7 @@
                 <div class="container-fluid">
                     <div class="card direct-chat direct-chat-primary">
                         <div class="card-header">
-                            <h5 class="card-title">Curriculum number <?php echo $_GET['curnum'].' at '.$_GET['des']?></h5>
+                            <h5 class="card-title">Curriculum number <?php echo $_GET['curnum']?></h5>
                         </div>
                         <div class="card-body" style="overflow-x: auto" id="cont">
                         </div>

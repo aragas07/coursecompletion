@@ -17,10 +17,13 @@
     }else if(isset($_POST['login'])){
         $username = $_POST['login'];
         $pass = $_POST['password'];
-        $login = $conn->query("SELECT * FROM admin WHERE username = '$username' AND password = '$pass'");
+        $login = $conn->query("SELECT * FROM admin INNER JOIN course ON admin.course_id = course.id WHERE username = '$username' AND password = '$pass'");
         if($login->num_rows > 0){
             echo 'success';
             $_SESSION['auth'] = true;
+            while($row = $login->fetch_assoc()){
+                $_SESSION['courseId'] = $row['course_id'];
+            }
         }else{
             echo 'Sorry you are not able to login';
         }
@@ -155,6 +158,10 @@
             }
         }
         echo json_encode(['success'=>$bool,'response'=>$response]);
+    }else if(isset($_POST['getCourse'])){
+        $getCourse = $conn->query("SELECT * FROM course WHERE institute_id = ".$_POST['getCourse']);
+        while($row = $getCourse->fetch_assoc()){
+            echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+        }
     }
-    
 ?>

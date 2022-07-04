@@ -2,6 +2,7 @@
     include("../database/DBConnection.php");
     include_once '../database/remaining.php';
     global $conn;  
+    session_start();
     
     class subject{
         public $courseno, $description, $pre, $year, $sem, $unit, $grade, $comply, $course, $subId;
@@ -728,7 +729,8 @@
         $page = $_POST['page'];
         $page = max($page-1,0);
         $page = $page*10;
-        $getStud = $conn->query("SELECT * FROM student WHERE id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%' LIMIT $page,10");
+        $courseid = $_SESSION['courseId'];
+        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) ORDER BY year ASC LIMIT $page,10");
         while($row = $getStud->fetch_assoc()){
             echo '<tr>
                 <td>'.$row['id'].'</td>
@@ -738,7 +740,8 @@
                 <td>'.$row['bday'].'</td>
                 <td>'.$row['gender'].'</td>
                 <td>'.$row['address'].'</td>
-                <td>'.$row['email'].'</td>';
+                <td>'.$row['email'].'</td>
+                <td>'.$row['year'].'</td>';
                 if($row['curriculum'] == ''){
                     echo '<td><a href="enrollment.php?id='.$row['id'].'" style="width:100%" class="btn btn-default">ADMIT</a></td>';
                 }else{
@@ -769,7 +772,7 @@
                     $co = $count['total'];
                 }
                 echo '<div class="col-lg-3 col-6 box">
-                    <a href="curnum.php?course='.$course['id'].'&des='.$course['name'].'" id="'.$course['id'].'">
+                    <a>
                         <div class="small-box bg-course">
                             <div class="inner">
                                 <h4>'.$course['name'].'</h4>
@@ -887,18 +890,18 @@
             </tr>';
         }
     }else if(isset($_POST['displayTaken'])){
-        $emailGrades = '<div id="emailGrades" style="display: none;"><div>'; //changes 02-27-2021
+        $emailGrades = ''; //changes 02-27-2021
 
         $sid = $_POST['displayTaken'];
         $years = array('1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','11th','12th','13th');
         $getYear = $conn->query("SELECT * FROM takes WHERE student_id = '$sid' GROUP BY year");
         $i = 0;
         while($year = $getYear->fetch_assoc()){
+            $emailGrades = '<div id="emailGrades" style="display: none;"><div>';
             $getSem = $conn->query("SELECT * FROM takes WHERE student_id = '$sid' AND year = ".$year['year']." GROUP BY sem");
             echo '<h2 class="col-md-12">'.$years[$i].' year</h2>';
             $emailGrades .= '<h2>'.$years[$i].' year</h2>
                 <div style="display: flex;">'; //changes 02-27-2021
-
             $i++;
             $j = 0;
             while($sem = $getSem->fetch_assoc()){
@@ -1019,6 +1022,7 @@
                 $j++;
             }
         }
+        mysqli_query($conn,"UPDATE student SET year = $i WHERE id = '$sid'");
         $emailGrades .= '</div>
             </div></div>'; //changes 02-27-2021
         $emailGrades = preg_replace('/~MR-50~/', 'margin-right: 50px', $emailGrades, (substr_count($emailGrades, '~MR-50~') - 1)); //changes 02-27-2021
@@ -1085,7 +1089,11 @@
                             <input name="email" value="'.$row['email'].'" type="email" required class="form-control">
                         </div>
                     </div>
-                </form>||'.$row['course_id'];
+                </form>||'.$row['course_id'].'||';
+                $getIns = $conn->query("SELECT i.id AS iid, i.name AS name FROM course AS c INNER JOIN institute AS i ON c.institute_id = i.id WHERE c.id = ".$row['course_id']);
+                while($getins = $getIns->fetch_assoc()){
+                    echo $getins['iid'];
+                }
             }
         }else{
             echo '||<div class="row">
@@ -1136,10 +1144,11 @@
         $search = $_POST['searching'];
         $start = $_POST['subjectpaging'];
         $ap = $start;
+        $courseid = $_SESSION['courseId'];
         if($_POST['type'] == 'subject'){
             $getCount = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$search%' OR subject_description LIKE '%$search%'");
         }else{
-            $getCount = $conn->query("SELECT * FROM student WHERE id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%'");
+            $getCount = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL)");
         }
         $count = $getCount->num_rows/10;
         $count = ceil($count);

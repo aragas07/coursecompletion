@@ -38,7 +38,6 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
             </section>
-
             <div class="main-container">
                 <div class="card direct-chat direct-chat-primary">
                     <div class="card-header">
@@ -99,12 +98,23 @@
                         <h2 id="enrolled"></h2>
                         <div id="cur-card" hidden class="card collapsed-card">
                             <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
-                                <div class="card-title form-group row col-md-10">
+                                <div class="card-title form-group row col-md-11">
+                                    <label class="fol-form-label">Institue :</label>
+                                    <div class="col-sm-2">
+                                        <select id="institute" class="form-control">
+                                            <?php 
+                                                $getCourse = $conn->query("SELECT * FROM institute ORDER BY name ASC");
+                                                while($row = $getCourse->fetch_assoc()){
+                                                    echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                     <label class="fol-form-label">Course :</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-5">
                                         <select id="course" class="form-control">
                                             <?php 
-                                                        $getCourse = $conn->query("SELECT * FROM course");
+                                                        $getCourse = $conn->query("SELECT * FROM course WHERE institute_id = 14");
                                                         while($row = $getCourse->fetch_assoc()){
                                                             echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
                                                         }
@@ -112,7 +122,7 @@
                                         </select>
                                     </div>
                                     <label class="fol-form-label">Curriculum :</label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <select id="cur" class="form-control">
                                         </select>
                                     </div>
@@ -155,6 +165,20 @@
     <script src="assets/plugins/toastr/toastr.min.js"></script>
     <script>
     $(document).ready(function(e) {
+        $("#institute").change(function(){
+            displayCourse($(this).val());
+        })
+
+        function displayCourse(id){
+            $.ajax({
+                url: 'database/DBManipulation.php',
+                type: 'post',
+                data: {getCourse: id},
+                success: function(result){
+                    $("#course").html(result);
+                }
+            })
+        }
         $("#submit").click(function(){
             Swal.fire({
                 title: 'Confirm admission',
@@ -268,9 +292,10 @@
                         $("#enrolled").text("");
                     }
                     if(split[2] != ''){
-                        $("#submit").text("Change");
+                        $("#submit").prop('hidden',true);
                         $("#enrolled").text("Admitted at");
-                        $("#course").val(split[2]);
+                        displayCourse(split[3]);
+                        $("#institute").val(split[3]);
                         loaddata(split[2],split[0]);
                     }else{
                         loaddata($("#course").val(),1);

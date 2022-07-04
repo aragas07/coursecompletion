@@ -54,6 +54,7 @@
                                         <th>Sex</th>
                                         <th>Address</th>
                                         <th>Email</th>
+                                        <th>Year</th>
                                     </tr>
                                 </thead>
                                 <tbody id="s-table">
@@ -169,7 +170,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button id="vgrade" class="btn btn-default">View grades</button>
-                        <button id="change-course" class="btn btn-primary">Change course</button>
+                        <button id="change-course" class="btn btn-primary">View Details</button>
                     </div>
                 </div>
             </div>
