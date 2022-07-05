@@ -1150,6 +1150,8 @@
         $courseid = $_SESSION['courseId'];
         if($_POST['type'] == 'subject'){
             $getCount = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$search%' OR subject_description LIKE '%$search%'");
+        }else if($_POST['type'] == 'irreg'){
+            $getCount = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$search%' OR subject_description LIKE '%$search%' AND deliquency IS NOT NULL");
         }else{
             $getCount = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL)");
         }
@@ -1176,7 +1178,7 @@
         $year = $_POST['year'];
         $sem = $_POST['semester'];
         echo '<select class="form-control select-subject">';
-            $getSubject = $conn->query("SELECT * FROM curriculum AS c INNER JOIN subject AS s ON c.subject_id = s.id WHERE course_id = $courseid AND number = $number AND year = $year AND sem = $sem;");
+            $getSubject = $conn->query("SELECT * FROM curriculum AS c INNER JOIN subject AS s ON c.subject_id = s.id WHERE course_id = $courseid AND number = $number AND year = $year AND sem = $sem GROUP BY s.subject_description");
             while($subject = $getSubject->fetch_assoc()){
                 echo '<option value="'.$subject['id'].'">'.$subject['course_num'].' - '.$subject['subject_description'].' year</option>';
             }

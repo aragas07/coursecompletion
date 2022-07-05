@@ -301,17 +301,19 @@
 
         $("#irreg").click(function(){
             type = 'irreg';
+            paging($("#search").val(), 1);
         })
 
         $("#reg").click(function(){
             type = 'student';
+            paging($("#search").val(), 1);
         })
 
         var b = true,
             studId = 0, type="student";
         $("#search").keyup(function() {
             load($(this).val(), 1);
-            paging($(this).val(), 1,);
+            paging($(this).val(), 1);
         })
         paging('', 1);
         load('', 1);
@@ -323,7 +325,7 @@
                 data: {
                     subjectpaging: id,
                     searching: search,
-                    type: "student"
+                    type: type
                 },
                 success: function(result) {
                     $("#paging").html(result);
