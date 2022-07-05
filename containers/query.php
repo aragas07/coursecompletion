@@ -1004,7 +1004,7 @@
                         }else if($unit >= 21*0.50 && $unit <= 21*0.75){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">PROBATION!</h4>';
                             $emailGrades .= '<h4 style="color: red; font-weight: 700">PROBATION!</h4>'; //changes 02-27-2021
-                            $warning = 'provation';
+                            $warning = 'probation';
                         }else if($unit >= 21*0.76){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">DEBARMENT!</h4>';
                             $emailGrades .= '<h4 style="color: red; font-weight: 700">DEBARMENT!</h4>'; //changes 02-27-2021
