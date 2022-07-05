@@ -27,7 +27,7 @@
         }else{
             echo 'Sorry you are not able to login';
         }
-
+//dfdf
     }else if(isset($_POST['register'])){
         if(mysqli_query($conn,"INSERT INTO admin(fname,lname,course_id,username,password,contact) VALUES('".$_POST['fname']."','".$_POST['lname']."',".$_POST['course'].",'".$_POST['register']."','".$_POST['password']."','".$_POST['contact']."')")){
             echo 'success';
