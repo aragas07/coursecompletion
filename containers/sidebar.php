@@ -1,6 +1,11 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <a class="nav-link" id="0" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-
+    <?php
+        $getCourse = $conn->query("SELECT * FROM course WHERE id = ".$_SESSION['courseId']);
+        while($row = $getCourse->fetch_assoc()){
+            echo $row['name'];
+        }
+    ?>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">

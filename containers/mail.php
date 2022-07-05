@@ -15,8 +15,7 @@ try {
     $mail->SMTPSecure = 'tls';         
     $mail->Port       = 587;   
     
-    //$email = $_POST['email'];
-    $email = 'argie.ragas@dorsu.edu.ph';
+    $email = $_POST['email'];
     $mail->setFrom('julius_evan.rivas@dorsu.edu.ph','DOrSU grades');
     $mail->addAddress($email);
     $mail->isHTML(true);             
