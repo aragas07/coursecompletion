@@ -3,7 +3,7 @@
     include_once '../database/remaining.php';
     global $conn;  
     session_start();
-    
+    error_reporting(0);
     class subject{
         public $courseno, $description, $pre, $year, $sem, $unit, $grade, $comply, $course, $subId;
     }
@@ -742,6 +742,32 @@
                 <td>'.$row['address'].'</td>
                 <td>'.$row['email'].'</td>
                 <td>'.$row['year'].'</td>';
+                if($row['curriculum'] == ''){
+                    echo '<td><a href="enrollment.php?id='.$row['id'].'" style="width:100%" class="btn btn-default">ADMIT</a></td>';
+                }else{
+                    echo '<td><button class="btn btn-success enrolled" style="width:100%" id="'.$row['id'].'||'.$row['course_id'].'||'.$row['curriculum'].'" data-toggle="modal" data-target="#enrol">ADMITTED</button></td>';
+                }
+            echo '</tr>';
+        }
+    }else if(isset($_POST['disStudentirreg'])){
+        $search = $_POST['disStudentirreg'];
+        $page = $_POST['page'];
+        $page = max($page-1,0);
+        $page = $page*10;
+        $courseid = $_SESSION['courseId'];
+        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) AND deliquency IS NOT NULL ORDER BY year ASC LIMIT $page,10");
+        while($row = $getStud->fetch_assoc()){
+            echo '<tr>
+                <td>'.$row['id'].'</td>
+                <td>'.$row['fname'].'</td>
+                <td>'.$row['mname'].'</td>
+                <td>'.$row['lname'].'</td>
+                <td>'.$row['bday'].'</td>
+                <td>'.$row['gender'].'</td>
+                <td>'.$row['address'].'</td>
+                <td>'.$row['email'].'</td>
+                <td>'.$row['year'].'</td>
+                <td>'.$row['deliquency'].'</td>';
                 if($row['curriculum'] == ''){
                     echo '<td><a href="enrollment.php?id='.$row['id'].'" style="width:100%" class="btn btn-default">ADMIT</a></td>';
                 }else{

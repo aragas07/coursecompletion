@@ -83,6 +83,7 @@
                                                 <th>Address</th>
                                                 <th>Email</th>
                                                 <th>Year level</th>
+                                                <th>Deliquency</th>
                                             </tr>
                                         </thead>
                                         <tbody id="irreg-table">
@@ -313,10 +314,12 @@
             studId = 0, type="student";
         $("#search").keyup(function() {
             load($(this).val(), 1);
+            loadirreg($(this).val(), 1);
             paging($(this).val(), 1);
         })
         paging('', 1);
         load('', 1);
+        loadirreg('', 1);
 
         function paging(search, id) {
             $.ajax({
@@ -348,6 +351,43 @@
                 },
                 success: function(result) {
                     $("#s-table").html(result);
+                    $(".data").click(function() {
+                        $("#stud-id").val($(this).attr('id'));
+                    })
+                    $(".enrolled").click(function() {
+                        $split = $(this).attr('id').split('||');
+                        $("#vgrade").click(function() {
+                            window.location.href = 'grades.php?id=' + $split[0];
+                        })
+                        $("#change-course").click(function() {
+                            window.location.href = "enrollment.php?id=" + $split[0];
+                        })
+                        $("#course-cur").text("Curriculum number: " + $split[2]);
+                        $.ajax({
+                            url: 'containers/query.php',
+                            type: 'post',
+                            data: {
+                                getCourseName: $split[1]
+                            },
+                            success: function(result) {
+                                $("#course-title").text(result);
+                            }
+                        })
+                    })
+                }
+            })
+        }
+        
+        function loadirreg(text, page) {
+            $.ajax({
+                url: 'containers/query.php',
+                type: 'post',
+                data: {
+                    disStudentirreg: text,
+                    page: page
+                },
+                success: function(result) {
+                    $("#irreg-table").html(result);
                     $(".data").click(function() {
                         $("#stud-id").val($(this).attr('id'));
                     })
