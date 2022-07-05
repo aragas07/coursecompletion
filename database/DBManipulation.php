@@ -27,7 +27,6 @@
         }else{
             echo 'Sorry you are not able to login';
         }
-//dfdf
     }else if(isset($_POST['register'])){
         if(mysqli_query($conn,"INSERT INTO admin(fname,lname,course_id,username,password,contact) VALUES('".$_POST['fname']."','".$_POST['lname']."',".$_POST['course'].",'".$_POST['register']."','".$_POST['password']."','".$_POST['contact']."')")){
             echo 'success';
@@ -37,7 +36,7 @@
     }else if(isset($_POST['logout'])){
         session_unset();
         session_destroy();
-        header('location:../');
+        header('location:../login.php');
     }else if(isset($_POST['latest'])){
         $student = $_POST['latest'];
         $getYear = $conn->query("SELECT * FROM takes WHERE student_id = '$student' ORDER BY year DESC LIMIT 1");
