@@ -158,6 +158,98 @@
             }
         }
         echo json_encode(['success'=>$bool,'response'=>$response]);
+    }else if(isset($_FILES['gradesfile']['name'])){
+        $csvFile = fopen($_FILES['gradesfile']['tmp_name'], 'r');
+        $bool = false;
+        $response = '';
+        while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
+            $ID = $getData[0];
+            $course = $getData[1];
+            $description = $getData[2];
+            $year = $getData[3];
+            $sem = $getData[4];
+            $grade = $getData[5];
+            if(strtolower($year) == 'year' && strtolower($sem) == 'sem' && strtolower($course) == 'course no.' && strtolower($description) == 'description' && strtolower($grade) == 'grades' && strtolower($ID) == 'student id'){
+                $bool = true;
+            }else if($bool){
+                $subject = '';
+                $getSubject = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$course%' AND subject_description LIKE '%$description%'");
+                while($sub = $getSubject->fetch_assoc()){
+                    $subject = $sub['id'];
+                }
+                if($getSubject->num_rows != 0){
+                    if(mysqli_query($conn,"INSERT INTO takes(student_id,subject_id,grades,year,sem) VALUES('$ID',$subject,'$grade',$year,$sem)")){
+                        $response = 'The file has been uploaded.';
+                    }else{
+                        $response = "The file format is incorrect.";
+                    }
+                }
+            }else{
+                $response = "The file format is incorrect.";
+            }
+        }
+        echo json_encode(['success'=>$bool,'response'=>$response]);
+    }else if(isset($_FILES['curriculumfile']['name'])){
+        $num = 1;
+        $courseid = $_SESSION['courseId'];
+        $getCount = $conn->query("SELECT * FROM curriculum WHERE course_id = $courseid ORDER BY number DESC LIMIT 1");
+        if($getCount->num_rows > 0){
+            while($row = $getCount->fetch_assoc()){
+                $num = (int)$row['number'];
+            }
+            $num += 1;
+        }
+        $csvFile = fopen($_FILES['curriculumfile']['tmp_name'], 'r');
+        $bool = false;
+        $response = '';
+        $sample = '';
+        while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
+            $year = $getData[0];
+            $sem = $getData[1];
+            $course = $getData[2];
+            $description = $getData[3];
+            $prereq = $getData[4];
+            $prereqs = $getData[4];
+            if(strtolower($year) == 'year' && strtolower($sem) == 'sem' && strtolower($description) == 'description' && strtolower($prereq) == 'prerequisite'){
+                $bool = true;
+            }else if($bool){
+                $subject = '';
+                $prereq = explode(",",$getData[4]);
+                $getSubject = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$course%' AND subject_description LIKE '%$description%'");
+                while($sub = $getSubject->fetch_assoc()){
+                    $subject = $sub['id'];
+                }
+                $response .= sizeof($prereq).'=||';
+                $sample .= $prereqs.'=||';
+                // if(sizeof($prereq) != 0){
+                //     for($i = 0; $i < sizeof($prereq) ;$i++){
+                //         $str = trim($prereq[$i]);
+                //         $getprereq = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$str%'");
+                //         while($prerequisite = $getprereq->fetch_assoc()){
+                //             if($getSubject->num_rows != 0){
+                //                 $pre = $prerequisite['id'];
+                //                 if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,prerequisites,year,sem,number) VALUES($courseid,$subject,$pre,$year,$sem,$num)")){
+                //                     $response = 'The file has been uploaded.';
+                //                 }else{
+                //                     $response = "The file format is incorrect.";
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }else{
+                //     if($getSubject->num_rows != 0){
+                //         if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,year,sem,number) VALUES($courseid,$subject,$year,$sem,$num)")){
+                //             $response = 'The file has been uploaded.';
+                //         }else{
+                //             $response = "The file format is incorrect.";
+                //         }
+                //     }
+                // }
+            }else{
+                $response = "The file format is incorrect.";
+            }
+        }
+        echo json_encode(['success'=>$bool,'response'=>$response, 'sample'=>$sample]);
     }else if(isset($_POST['getCourse'])){
         $getCourse = $conn->query("SELECT * FROM course WHERE institute_id = ".$_POST['getCourse']);
         while($row = $getCourse->fetch_assoc()){

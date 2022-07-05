@@ -1,0 +1,18 @@
+Sir Dony. How about the substitution, is it included in the system? No answer
+Sir Dony. Estimated years of residence. Did you consider the pre-requisite of the subject? Answer: Yes
+Sorting: By Course, year level, and deliquency
+Upload the data via CSV to avoid manual encoding.
+Send the prospectus via email in portable data format.
+Sir Ar-Jay -> Shifting feature is not included in the system.
+How to determine the academic status of the student?
+Sir Dony. "Nganong i manual ug encode sa adviser ang grades, student info, ug ang curriculum".
+Sir Dony. Check the privacy of the data. Limit the information to send. Add messages like " This semester you are _________ ".
+The adviser should be limited to the specific program (course). 
+
+
+<!--- DID NOT ACHIEVED --->
+From chatbox. Ar-Jay Sacay. gi consider b nila ang mag apply ug leave to count residency. Answer: Wala
+Sorting: deliquency
+The system is not yet hosted.
+Include the survey questionnaire in the document.
+Sending grades to the email is by request only.
