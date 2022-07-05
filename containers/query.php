@@ -986,9 +986,9 @@
                     echo '<div class="row"> 
                     <label>Total unit\'s not passed:</label>
                     <input type="text" value="'.$unit.'" disabled class="form-control mr-4 ml-1 col-sm-1 form-control-sm"> 
-                    <label>Total unit: <input type="text" class="t-unit mr-5" disabled value="'.$total.'"></label>
-                    <label class="right" hiddenf>GWA: <input type="text" class="t-unit" disabled value="'.$avg.'"></label>
-                </div>
+                    <label>Total unit: <input type="text" class="t-unit mr-5" disabled value="'.$total.'"></label>';
+                    //<label class="right" hiddenf>GWA: <input type="text" class="t-unit" disabled value="'.$avg.'"></label>
+                echo'</div>
                 <button id="'.$years[$i].'and'.$years[$j].'" class="btn btn-secondary mb-3 edit-grades-btn">Edit</button>';
             $emailGrades .= '<div style="display: flex; width: 50%;"> 
                                 <p style="margin-right: 5px;">Total unit\'s not passed:</p>
@@ -996,19 +996,21 @@
                             </div>'; //changes 02-27-2021
 
                     if ($unit != 0) {
+                        $warning = '';
                         if($unit >= 21*0.25 && $unit <= 21*0.49){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">WARNING!</h4>';
                             $emailGrades .= '<h4 style="color: red; font-weight: 700">WARNING!</h4>'; //changes 02-27-2021
-
+                            $warning = 'warning';
                         }else if($unit >= 21*0.50 && $unit <= 21*0.75){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">PROBATION!</h4>';
                             $emailGrades .= '<h4 style="color: red; font-weight: 700">PROBATION!</h4>'; //changes 02-27-2021
-
+                            $warning = 'provation';
                         }else if($unit >= 21*0.76){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">DEBARMENT!</h4>';
                             $emailGrades .= '<h4 style="color: red; font-weight: 700">DEBARMENT!</h4>'; //changes 02-27-2021
-
+                            $warning = 'debarment';
                         }
+                        mysqli_query($conn,"UPDATE student SET deliquency = '$warning' WHERE id = '$sid'");
                     }
                     echo '</div>
                     </div>';

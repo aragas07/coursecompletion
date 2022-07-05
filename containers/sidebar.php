@@ -1,3 +1,8 @@
+<?php
+        if(!$_SESSION['auth']){
+            header("location:login.php");
+        }
+    ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <a class="nav-link" id="0" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     <?php
@@ -16,11 +21,6 @@
         </li>
     </ul>
 </nav>
-    <?php
-        if(!$_SESSION['auth']){
-            header("location:login.php");
-        }
-    ?>
 
 <aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->

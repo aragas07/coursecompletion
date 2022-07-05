@@ -127,7 +127,7 @@
                 $query = "SELECT id FROM student WHERE email = '$email' AND id = '$id'";
                 $check = mysqli_query($conn, $query);
                 if ($check->num_rows == 0){
-                    mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email) VALUES('$id','$fname','$mname','$lname','$bday','$sex','$address','$email')");
+                    mysqli_query($conn, "INSERT INTO student(id,fname,mname,lname,bday,gender,address,email,year) VALUES('$id','$fname','$mname','$lname','$bday','$sex','$address','$email',1)");
                 }
                 $response = 'The file has been uploaded.';
             }else{
