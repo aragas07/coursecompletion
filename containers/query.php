@@ -1022,6 +1022,7 @@
                 $j++;
             }
         }
+        $i++;
         mysqli_query($conn,"UPDATE student SET year = $i WHERE id = '$sid'");
         $emailGrades .= '</div>
             </div></div>'; //changes 02-27-2021

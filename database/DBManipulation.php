@@ -202,7 +202,6 @@
         $csvFile = fopen($_FILES['curriculumfile']['tmp_name'], 'r');
         $bool = false;
         $response = '';
-        $sample = '';
         while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE){
             $year = $getData[0];
             $sem = $getData[1];
@@ -214,42 +213,40 @@
                 $bool = true;
             }else if($bool){
                 $subject = '';
-                $prereq = explode(",",$getData[4]);
                 $getSubject = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$course%' AND subject_description LIKE '%$description%'");
                 while($sub = $getSubject->fetch_assoc()){
                     $subject = $sub['id'];
                 }
-                $response .= sizeof($prereq).'=||';
-                $sample .= $prereqs.'=||';
-                // if(sizeof($prereq) != 0){
-                //     for($i = 0; $i < sizeof($prereq) ;$i++){
-                //         $str = trim($prereq[$i]);
-                //         $getprereq = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$str%'");
-                //         while($prerequisite = $getprereq->fetch_assoc()){
-                //             if($getSubject->num_rows != 0){
-                //                 $pre = $prerequisite['id'];
-                //                 if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,prerequisites,year,sem,number) VALUES($courseid,$subject,$pre,$year,$sem,$num)")){
-                //                     $response = 'The file has been uploaded.';
-                //                 }else{
-                //                     $response = "The file format is incorrect.";
-                //                 }
-                //             }
-                //         }
-                //     }
-                // }else{
-                //     if($getSubject->num_rows != 0){
-                //         if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,year,sem,number) VALUES($courseid,$subject,$year,$sem,$num)")){
-                //             $response = 'The file has been uploaded.';
-                //         }else{
-                //             $response = "The file format is incorrect.";
-                //         }
-                //     }
-                // }
+                if(strlen($prereq) != 0){
+                    $prereq = explode(",",$getData[4]);
+                    for($i = 0; $i < sizeof($prereq) ;$i++){
+                        $str = trim($prereq[$i]);
+                        $getprereq = $conn->query("SELECT * FROM subject WHERE course_num LIKE '%$str%'");
+                        while($prerequisite = $getprereq->fetch_assoc()){
+                            if($getSubject->num_rows != 0){
+                                $pre = $prerequisite['id'];
+                                if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,prerequisites,year,sem,number) VALUES($courseid,$subject,$pre,$year,$sem,$num)")){
+                                    $response = 'The file has been uploaded.';
+                                }else{
+                                    $response = "The file format is incorrect.";
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    if($getSubject->num_rows != 0){
+                        if(mysqli_query($conn,"INSERT INTO curriculum(course_id,subject_id,year,sem,number) VALUES($courseid,$subject,$year,$sem,$num)")){
+                            $response = 'The file has been uploaded.';
+                        }else{
+                            $response = "The file format is incorrect.";
+                        }
+                    }
+                }
             }else{
                 $response = "The file format is incorrect.";
             }
         }
-        echo json_encode(['success'=>$bool,'response'=>$response, 'sample'=>$sample]);
+        echo json_encode(['success'=>$bool,'response'=>$response]);
     }else if(isset($_POST['getCourse'])){
         $getCourse = $conn->query("SELECT * FROM course WHERE institute_id = ".$_POST['getCourse']);
         while($row = $getCourse->fetch_assoc()){

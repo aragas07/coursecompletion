@@ -362,7 +362,7 @@
         <!-- AdminLTE for demo purposes -->
         <script src="assets/dist/js/demo.js"></script>
         <script>
-        $(function() {
+        $(function() { 
             $("#upcsv").submit(function(e) {
                 e.preventDefault();
                 $("#loading").prop('hidden', false);

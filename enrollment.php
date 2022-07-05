@@ -292,7 +292,7 @@
                         $("#enrolled").text("");
                     }
                     if(split[2] != ''){
-                        $("#submit").prop('hidden',true);
+                        $("#submit").text('Change');
                         $("#enrolled").text("Admitted at");
                         displayCourse(split[3]);
                         $("#institute").val(split[3]);

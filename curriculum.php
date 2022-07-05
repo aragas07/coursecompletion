@@ -173,7 +173,7 @@
                         if (result.success) {
                             toastr.success(result.response);
                             setTimeout(function() {
-                                //location.reload();
+                                location.reload();
                             }, 1300);
                         } else {
                             toastr.error(result.response);

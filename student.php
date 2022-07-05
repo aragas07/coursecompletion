@@ -54,7 +54,7 @@
                                         <th>Sex</th>
                                         <th>Address</th>
                                         <th>Email</th>
-                                        <th>Year</th>
+                                        <th>Year level</th>
                                     </tr>
                                 </thead>
                                 <tbody id="s-table">
