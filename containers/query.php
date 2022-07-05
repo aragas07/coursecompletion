@@ -755,7 +755,7 @@
         $page = max($page-1,0);
         $page = $page*10;
         $courseid = $_SESSION['courseId'];
-        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) AND deliquency IS NOT NULL ORDER BY year ASC LIMIT $page,10");
+        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) AND deliquency IS NOT NULL AND course_id IS NOT NULL ORDER BY deliquency DES LIMIT $page,10");
         while($row = $getStud->fetch_assoc()){
             echo '<tr>
                 <td>'.$row['id'].'</td>
