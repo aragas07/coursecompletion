@@ -5,14 +5,18 @@ Upload the data via CSV to avoid manual encoding.
 Send the prospectus via email in portable data format.
 Sir Ar-Jay -> Shifting feature is not included in the system.
 How to determine the academic status of the student?
-Sir Dony. "Nganong i manual ug encode sa adviser ang grades, student info, ug ang curriculum".
+Sir Dony. "Nganong i manual ug encode sa adviser ang grades, student info, ug ang curriculum".s
 Sir Dony. Check the privacy of the data. Limit the information to send. Add messages like " This semester you are _________ ".
 The adviser should be limited to the specific program (course). 
 
 
-<!--- DID NOT ACHIEVED --->
-From chatbox. Ar-Jay Sacay. gi consider b nila ang mag apply ug leave to count residency. Answer: Wala
-Sorting: deliquency
-The system is not yet hosted.
-Include the survey questionnaire in the document.
-Sending grades to the email is by request only.
+<!--- NEW RECOMMENDATION --->
+--  1. Provide the link of the domain and the credentials. --> http://coursecompletion.epizy.com/
+--  2. Sending grades by request only (optional: automatic sending of grades after the semester)
+    3. Delinquency is evaluated by semester (First objective).
+    4. Review the deliquency policy. Is the student with less than nine units included in the deliquency computation? Check the student manual.
+    5. Check the policy regarding the irregular and regular students. Check the college code for the regular/irregular student according to the semester load.
+    6. The estimated term of residence is affected by the maximum residency rule.
+    7. In sending grades through email, put the word "This semester you are_______" in the body section.
+    8. Check the curriculum of the student during shifting process. Include the estimate of the residency according to the new curriculum. 
+    Also, check the process of substitution. This will affect to the residency of the student.--  9. Remove the Dijkstras algorithm in the manuscript if not implemented in the system. --> DOCU.

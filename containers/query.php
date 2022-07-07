@@ -755,7 +755,7 @@
         $page = max($page-1,0);
         $page = $page*10;
         $courseid = $_SESSION['courseId'];
-        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) AND deliquency IS NOT NULL AND course_id IS NOT NULL ORDER BY deliquency DES LIMIT $page,10");
+        $getStud = $conn->query("SELECT * FROM student WHERE (id LIKE '%$search%' OR fname LIKE '%$search%' OR mname LIKE '%$search%' OR lname LIKE '%$search%') AND (course_id = $courseid OR course_id IS NULL) AND deliquency > '' AND course_id IS NOT NULL ORDER BY deliquency DESC LIMIT $page,10");
         while($row = $getStud->fetch_assoc()){
             echo '<tr>
                 <td>'.$row['id'].'</td>
@@ -930,6 +930,7 @@
                 <div style="display: flex;">'; //changes 02-27-2021
             $i++;
             $j = 0;
+            $string = '';
             while($sem = $getSem->fetch_assoc()){
                 $total = 0;
                 $unit = 0;
@@ -946,7 +947,7 @@
                             </tr>
                         </thead>
                         <tbody>';
-                $emailGrades .= '<div style="width: 100%; ~MR-50~">
+                $string = '<div style="width: 100%; ~MR-50~">
                         <i style="font-weight: 900">'.$years[$j].' sem</i>
                         <table style="border-collapse: collapse;">
                             <thead>
@@ -956,7 +957,7 @@
                                     <th style="width: 60%; padding: 10px; text-align: left; font-weight: 600; border: 1px solid #ddd; color: #fff;">Units</th>
                                     <th style="width: 10%; padding: 10px; text-align: left; font-weight: 600; border: 1px solid #ddd; color: #fff;">Final grades</th>';
                                     //'<th hidden style="width: 10%; padding: 10px; text-align: left; font-weight: 600; border: 1px solid #ddd; color: #fff;">Comply grades</th>
-                $emailGrades .= '</tr>
+                $string .= '</tr>
                             </thead>
                             <tbody>'; //changes 02-27-2021
                             $gpa = 0;
@@ -972,7 +973,7 @@
                                 <td>'.$row['unit'].'</td>
                                 <td id="'.$row['tid'].'" class="'.$years[$i].'and'.$years[$j].'">'.$row['grades'].'</td>
                                 <td hidden>';
-                            $emailGrades .= '<tr>
+                            $string .= '<tr>
                                 <td style="padding: 10px; border: 1px solid #ddd;">'.$row['course_num'].'</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">'.$row['subject_description'].'</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">'.$row['unit'].'</td>
@@ -982,21 +983,21 @@
                            
                             if ($row['comply'] == '' && (strtolower($row['grades']) == 'inc' || strtolower($row['grades']) == 'wip' || $row['grades'] == 4)){
                                 //echo '<input id="'.$row['tid'].'" class="comp-grades form-control" type="number"/>';
-                                $emailGrades .= $row['tid']; //changes 02-27-2021
+                                $string .= $row['tid']; //changes 02-27-2021
                                 $unit += $row['unit'];
                             } else if($row['comply'] == 5 || $row['grades'] == 5){
                                 $unit += $row['unit'];
                                 echo $row['comply'];
-                                $emailGrades .= $row['comply']; //changes 02-27-2021
+                                $string .= $row['comply']; //changes 02-27-2021
 
                             } else {
                                 echo $row['comply'];
-                                $emailGrades .= $row['comply']; //changes 02-27-2021
+                                $string .= $row['comply']; //changes 02-27-2021
 
                             }
                             echo '</td>
                             </tr>';
-                            $emailGrades .= '</td>
+                            $string .= '</td>
                             </tr>';  //changes 02-27-2021
                             $total += $row['unit'];
                             $avg = round($gpa/$total, 2);
@@ -1005,42 +1006,42 @@
                         echo '</tbody>
                     </table>
                     <div class="justify-content-between row mr-2 ml-3">';
-                        $emailGrades .= '</tbody>
+                        $string .= '</tbody>
                     </table>
                     <div style="display: flex;">';  //changes 02-27-2021
 
                     echo '<div class="row"> 
                     <label>Total unit\'s not passed:</label>
                     <input type="text" value="'.$unit.'" disabled class="form-control mr-4 ml-1 col-sm-1 form-control-sm"> 
-                    <label>Total unit: <input type="text" class="t-unit mr-5" disabled value="'.$total.'"></label>';
-                    //<label class="right" hiddenf>GWA: <input type="text" class="t-unit" disabled value="'.$avg.'"></label>
+                    <label>Total unit: <input type="text" class="t-unit mr-5" disabled value="'.$total.'"></label>
+                    <label class="right" hiddenf>GWA: <input type="text" class="t-unit" disabled value="'.$avg.'"></label>';
                 echo'</div>
                 <button id="'.$years[$i].'and'.$years[$j].'" class="btn btn-secondary mb-3 edit-grades-btn">Edit</button>';
-            $emailGrades .= '<div style="display: flex; width: 50%;"> 
+            $string .= '<div style="display: flex; width: 50%;"> 
                                 <p style="margin-right: 5px;">Total unit\'s not passed:</p>
                                 <p style="border: 1px solid #ddd; padding: 0px 8px; border-radius: 5px; font-weight: 700;">'.$unit.'</p>
                             </div>'; //changes 02-27-2021
 
+                    $warning = '';
                     if ($unit != 0) {
-                        $warning = '';
                         if($unit >= 21*0.25 && $unit <= 21*0.49){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">WARNING!</h4>';
-                            $emailGrades .= '<h4 style="color: red; font-weight: 700">WARNING!</h4>'; //changes 02-27-2021
+                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">WARNING!</h4>'; //changes 02-27-2021
                             $warning = 'warning';
                         }else if($unit >= 21*0.50 && $unit <= 21*0.75){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">PROBATION!</h4>';
-                            $emailGrades .= '<h4 style="color: red; font-weight: 700">PROBATION!</h4>'; //changes 02-27-2021
+                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">PROBATION!</h4>'; //changes 02-27-2021
                             $warning = 'probation';
                         }else if($unit >= 21*0.76){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">DEBARMENT!</h4>';
-                            $emailGrades .= '<h4 style="color: red; font-weight: 700">DEBARMENT!</h4>'; //changes 02-27-2021
+                            $string .= '<h4 style="color: red; margin: 15px 30px; font-weight: 700">DEBARMENT!</h4>'; //changes 02-27-2021
                             $warning = 'debarment';
                         }
-                        mysqli_query($conn,"UPDATE student SET deliquency = '$warning' WHERE id = '$sid'");
                     }
+                    mysqli_query($conn,"UPDATE student SET deliquency = '$warning' WHERE id = '$sid'");
                     echo '</div>
                     </div>';
-                    $emailGrades .= '<div style="display: flex; width: 50%;">
+                    $string .= '<div style="display: flex; width: 50%;">
                                         <p style="margin-right: 5px;">Total unit:</p>
                                         <p style="border: 1px solid #ddd; padding: 0px 8px; border-radius: 5px; font-weight: 700;">'.$total.'</p>
                                     </div>
@@ -1050,10 +1051,10 @@
                 $j++;
             }
         }
-        $i++;
         mysqli_query($conn,"UPDATE student SET year = $i WHERE id = '$sid'");
-        $emailGrades .= '</div>
+        $string .= '</div>
             </div></div>'; //changes 02-27-2021
+            $emailGrades .= $string;
         $emailGrades = preg_replace('/~MR-50~/', 'margin-right: 50px', $emailGrades, (substr_count($emailGrades, '~MR-50~') - 1)); //changes 02-27-2021
         $emailGrades = str_replace('~MR-50~', '', $emailGrades); //changes 02-27-2021
         echo $emailGrades; //changes 02-27-2021
