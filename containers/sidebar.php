@@ -77,7 +77,7 @@
                 <li class="nav-item">
                     <a href="deliquency.php" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
-                        <p>Scholastic Deliquency</p>
+                        <p>Scholastic Delinquency</p>
                     </a>
                 </li>
             </ul>

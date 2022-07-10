@@ -19,4 +19,5 @@ The adviser should be limited to the specific program (course).
     6. The estimated term of residence is affected by the maximum residency rule.
     7. In sending grades through email, put the word "This semester you are_______" in the body section.
     8. Check the curriculum of the student during shifting process. Include the estimate of the residency according to the new curriculum. 
-    Also, check the process of substitution. This will affect to the residency of the student.--  9. Remove the Dijkstras algorithm in the manuscript if not implemented in the system. --> DOCU.
+    Also, check the process of substitution. This will affect to the residency of the.
+--  9. Remove the Dijkstras algorithm in the manuscript if not implemented in the system. --> DOCU.

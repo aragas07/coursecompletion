@@ -41,7 +41,7 @@
                             <div class="card-tools">
                                     <ul class="nav nav-pills ml-auto">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#irregular" id="irreg" data-toggle="tab">Irregular</a>
+                                            <a class="nav-link" href="#irregular" id="irreg" data-toggle="tab">Delinquency</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link active" href="#allstudent" id="reg" data-toggle="tab">All student</a>

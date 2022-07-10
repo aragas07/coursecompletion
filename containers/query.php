@@ -1026,14 +1026,14 @@
                     if ($unit != 0) {
                         if($unit >= 21*0.25 && $unit <= 21*0.49){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">WARNING!</h4>';
-                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">WARNING!</h4>'; //changes 02-27-2021
+                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">This semester you are WARNING!</h4>'; //changes 02-27-2021
                             $warning = 'warning';
                         }else if($unit >= 21*0.50 && $unit <= 21*0.75){
                             echo '<h4 style="color: red; font-weight: 700" class="warning float-right">PROBATION!</h4>';
-                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">PROBATION!</h4>'; //changes 02-27-2021
+                            $string .= '<h4 style="color: red; margin: 0 30px; font-weight: 700">This semester you are PROBATION!</h4>'; //changes 02-27-2021
                             $warning = 'probation';
                         }else if($unit >= 21*0.76){
-                            echo '<h4 style="color: red; font-weight: 700" class="warning float-right">DEBARMENT!</h4>';
+                            echo '<h4 style="color: red; font-weight: 700" class="warning float-right">This semester you are DEBARMENT!</h4>';
                             $string .= '<h4 style="color: red; margin: 15px 30px; font-weight: 700">DEBARMENT!</h4>'; //changes 02-27-2021
                             $warning = 'debarment';
                         }
